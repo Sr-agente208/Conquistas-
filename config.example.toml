@@ -1,0 +1,44 @@
+# Configuração do Conquistas.
+# Copie para `conquistas.toml` (o arquivo real é ignorado pelo Git) e ajuste.
+#
+# Caminhos relativos são resolvidos a partir da pasta deste arquivo.
+
+[account]
+locale = "pt-BR"
+timezone = "America/Sao_Paulo"
+
+[browser]
+# false = janela visível (recomendado na 1ª execução e ao fazer login)
+headless = false
+slow_mo_ms = 0
+# "" = Chromium do Playwright; ou "chrome"/"msedge" para usar o navegador instalado
+channel = ""
+timeout_ms = 45000
+# Sessão salva após o login. Contém cookies: trate como senha.
+storage_state = "data/session/storage_state.json"
+
+[searches]
+enabled = true
+pc = 30
+mobile = 20
+min_delay_s = 4.0
+max_delay_s = 9.0
+# A cada N buscas o script consulta o saldo para detectar que a cota já foi cumprida
+check_every = 5
+max_stalled_checks = 3
+human_typing = true
+query_language = "pt-BR"
+
+[daily]
+# Conjunto diário + atividades extras (EXPERIMENTAL: depende de seletores da Microsoft)
+enabled = true
+max_cards = 12
+max_steps_per_card = 15
+per_card_timeout_s = 25.0
+
+[storage]
+database = "data/conquistas.sqlite3"
+
+[logging]
+level = "INFO"
+file = "data/logs/conquistas.log"

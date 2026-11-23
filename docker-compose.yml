@@ -1,0 +1,10 @@
+services:
+  conquistas:
+    build: .
+    image: conquistas:latest
+    volumes:
+      - ./data:/app/data
+      - ./conquistas.toml:/app/conquistas.toml:ro
+    # Rode o login na máquina host primeiro (a sessão fica em ./data/session).
+    command: ["run", "--headless"]
+    restart: "no"
