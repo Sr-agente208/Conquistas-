@@ -117,9 +117,38 @@ navegador ou fazer as buscas manualmente.
 | Buscas no celular | idem | Usa um contexto com user-agent/viewport de iPhone |
 | Conjunto diário e atividades extras | `conquistas run --only daily` | Abre cada cartão do dashboard e avança pelas respostas (**experimental**) |
 | Saldo e histórico | `conquistas status`, `conquistas report` | SQLite local com execuções e evolução dos pontos |
+| Painel no navegador | `conquistas serve` | Tela para disparar tudo e acompanhar o log ao vivo |
 
 O script **detecta a cota já cumprida**: se o saldo para de subir após algumas
 checagens, ele encerra aquela etapa em vez de repetir buscas inúteis.
+
+## Painel web — abrir e usar (estilo Zunder)
+
+```bash
+conquistas serve
+```
+
+Abre `http://127.0.0.1:8765` com uma tela simples, pensada para o celular e para quem não
+quer terminal:
+
+- **Saldo atual** e as cotas do dia (PC, celular, diário);
+- botões **Executar tudo**, **Só buscas**, **Só o diário** e **Simular**;
+- **console** com o log da execução ao vivo;
+- **histórico** das últimas execuções com o ganho de pontos.
+
+Na primeira vez o painel mostra **Entrar na conta**: isso abre o site oficial da Microsoft
+numa janela do Chromium **na sua máquina**. A senha é digitada lá — o painel nunca a vê — e
+só os cookies ficam em `data/session/storage_state.json`.
+
+**Por que não é um site público como o Zunder?** Serviços desse tipo recebem seu RA/senha e
+automatizam nos servidores deles. Aqui a escolha é deliberada: nenhuma senha sai da sua
+máquina e não existe um servidor de terceiros no meio. O painel escuta apenas em
+`localhost`, exige o cabeçalho `X-Conquistas` e confere a origem das requisições — outra aba
+do navegador não consegue disparar execuções. Para expor na rede é preciso
+`CONQUISTAS_ALLOW_PUBLIC=1` (não recomendado).
+
+Opções: `--port 8765`, `--host 127.0.0.1`, `--no-browser` (não abre o navegador sozinho) e
+`--headless` (executa sem mostrar a janela do Chromium).
 
 ## Como funciona
 
@@ -329,7 +358,10 @@ Estrutura:
 
 ```
 src/conquistas/
-  cli.py          # comandos: login, run, status, report, doctor
+  cli.py          # comandos: login, run, serve, status, report, doctor
+  server.py       # painel web local (HTTP + fila de execuções)
+  runner.py       # pipeline compartilhado entre CLI e painel
+  web/panel.html  # interface do painel (HTML/CSS/JS num arquivo só)
   config.py       # TOML + validação + variáveis de ambiente
   browser.py      # Playwright, perfis desktop/mobile, sessão salva
   auth.py         # login assistido e leitura de pontos

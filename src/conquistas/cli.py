@@ -21,6 +21,7 @@ exemplos:
   conquistas run                       # buscas de PC + celular + tarefas diárias
   conquistas run --only searches --pc 10
   conquistas run --only daily --dry-run
+  conquistas serve                     # painel web local (abrir e usar, estilo Zunder)
   conquistas status                    # saldo e resumo do dia
   conquistas report --days 14          # histórico de ganhos
   conquistas doctor                    # diagnóstico do ambiente
@@ -116,11 +117,7 @@ def cmd_run(args: argparse.Namespace, cfg: Config) -> int:
                 print(f"[{name} {index:02d}/{total:02d}] {query}")
         return 0
 
-    from .auth import ensure_signed_in, read_points
-    from .browser import Session
-    from .storage import Store
-    from .tasks import daily as daily_task
-    from .tasks import searches
+    from .runner import SessionExpired, execute
 
     if not cfg.browser.storage_state.exists():
         print(
@@ -129,72 +126,43 @@ def cmd_run(args: argparse.Namespace, cfg: Config) -> int:
         )
         return 2
 
-    with Store(cfg.storage.database) as store:
-        run_id = store.start_run()
-        try:
-            with Session(cfg) as session:
-                if not ensure_signed_in(session, cfg):
-                    store.finish_run(
-                        run_id, status="sessao-invalida", notes="execute `conquistas login`"
-                    )
-                    return 2
+    try:
+        result = execute(
+            cfg,
+            only=args.only,
+            pc=args.pc,
+            mobile=args.mobile,
+            dry_run=args.dry_run,
+            rng=rng,
+        )
+    except SessionExpired as exc:
+        print(f"{exc} Rode `conquistas login` e tente de novo.", file=sys.stderr)
+        return 2
+    except KeyboardInterrupt:
+        print("\nInterrompido pelo usuário.", file=sys.stderr)
+        return 130
+    except Exception as exc:
+        log.exception("Falha durante a execução")
+        print(f"Falha: {exc}", file=sys.stderr)
+        return 1
 
-                points_before = read_points(session)
-                if points_before is not None:
-                    store.record_points(points_before)
-
-                results = []
-                if args.only in ("all", "searches") and cfg.searches.enabled:
-                    results.extend(
-                        searches.run_both(
-                            session, cfg, pc_target, mobile_target, dry_run=args.dry_run, rng=rng
-                        )
-                    )
-                if args.only in ("all", "daily") and cfg.daily.enabled:
-                    results.append(daily_task.run(session, cfg, dry_run=args.dry_run, rng=rng))
-
-                points_after = read_points(session)
-                if points_after is not None:
-                    store.record_points(points_after)
-
-            by_name = {r.name: r for r in results}
-            pc_result = by_name.get("buscas:desktop")
-            mobile_result = by_name.get("buscas:mobile")
-            daily_result = by_name.get("diario")
-            gained = (
-                points_after - points_before
-                if points_before is not None and points_after is not None
-                else None
-            )
-            store.finish_run(
-                run_id,
-                points_before=points_before,
-                points_after=points_after,
-                pc_searches=pc_result.performed if pc_result else 0,
-                mobile_searches=mobile_result.performed if mobile_result else 0,
-                daily_done=daily_result.performed if daily_result else 0,
-                daily_total=daily_result.target if daily_result else 0,
-                status="simulacao" if args.dry_run else "ok",
-                notes="; ".join(r.notes for r in results if r.notes) or None,
-            )
-            _print_run_summary(results, points_before, points_after, gained)
-            return 0
-        except KeyboardInterrupt:
-            print("\nInterrompido pelo usuário.", file=sys.stderr)
-            store.finish_run(run_id, status="interrompido")
-            return 130
-        except Exception as exc:
-            log.exception("Falha durante a execução")
-            store.finish_run(run_id, status="erro", notes=str(exc)[:500])
-            return 1
+    _print_run_summary(result)
+    return 0
 
 
-def _print_run_summary(
-    results: list[Any], points_before: int | None, points_after: int | None, gained: int | None
-) -> None:
+def cmd_serve(args: argparse.Namespace, cfg: Config) -> int:
+    from .server import serve
+
+    if args.headless:
+        cfg = replace(cfg, browser=replace(cfg.browser, headless=True))
+    return serve(cfg, host=args.host, port=args.port, open_browser=not args.no_browser)
+
+
+def _print_run_summary(result: Any) -> None:
     print()
     print("Resumo da execução")
     print("=" * 46)
+    results = result.results
     if results:
         rows = [
             [
@@ -209,9 +177,11 @@ def _print_run_summary(
     else:
         print("Nenhuma tarefa habilitada na configuração.")
     print("-" * 46)
-    print(f"Saldo antes: {_fmt_points(points_before)}   depois: {_fmt_points(points_after)}")
-    if gained is not None:
-        print(f"Ganho nesta execução: +{_fmt_points(gained)} pontos")
+    print(
+        f"Saldo antes: {_fmt_points(result.points_before)}   depois: {_fmt_points(result.points_after)}"
+    )
+    if result.gained is not None:
+        print(f"Ganho nesta execução: +{_fmt_points(result.gained)} pontos")
     print()
 
 
@@ -396,6 +366,17 @@ def build_parser() -> argparse.ArgumentParser:
     run.add_argument("--headed", action="store_true", help="força janela visível")
     run.add_argument("--seed", type=int, help="semente aleatória (reprodutibilidade)")
     run.set_defaults(func=cmd_run)
+
+    serve = sub.add_parser("serve", help="abre o painel web local no navegador")
+    serve.add_argument("--host", default="127.0.0.1", help="endereço de escuta (padrão: 127.0.0.1)")
+    serve.add_argument("--port", type=int, default=8765, help="porta (padrão: 8765)")
+    serve.add_argument(
+        "--no-browser", action="store_true", help="não abrir o navegador automaticamente"
+    )
+    serve.add_argument(
+        "--headless", action="store_true", help="executar sem mostrar a janela do navegador"
+    )
+    serve.set_defaults(func=cmd_serve)
 
     status = sub.add_parser("status", help="mostra saldo e resumo do dia")
     status.set_defaults(func=cmd_status)

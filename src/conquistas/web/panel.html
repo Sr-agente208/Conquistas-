@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="robots" content="noindex" />
+    <title>Conquistas — painel</title>
+    <style>
+      :root {
+        --bg: #f4f5fa;
+        --card: #ffffff;
+        --text: #14161d;
+        --muted: #5f6779;
+        --line: #e3e6ef;
+        --accent: #5b4bdb;
+        --accent-soft: #ece9ff;
+        --ok: #137a4b;
+        --ok-soft: #e3f6ec;
+        --warn: #a35a00;
+        --warn-soft: #fdf0dd;
+        --err: #a92222;
+        --err-soft: #fdeaea;
+        --shadow: 0 1px 2px rgb(20 22 29 / 6%), 0 18px 40px -26px rgb(20 22 29 / 40%);
+        --radius: 18px;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0d0f16;
+          --card: #161a24;
+          --text: #eef1f7;
+          --muted: #a3abbd;
+          --line: #272d3c;
+          --accent: #ab9dff;
+          --accent-soft: #241f45;
+          --ok: #6fe0a4;
+          --ok-soft: #12301f;
+          --warn: #f0bd77;
+          --warn-soft: #33260f;
+          --err: #ff9d9d;
+          --err-soft: #351a1a;
+          --shadow: 0 1px 2px rgb(0 0 0 / 40%), 0 20px 44px -28px rgb(0 0 0 / 80%);
+        }
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      [hidden] {
+        display: none !important;
+      }
+      body {
+        margin: 0;
+        padding: 22px 16px 40px;
+        min-height: 100vh;
+        background:
+          radial-gradient(90% 60% at 50% -10%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%),
+          var(--bg);
+        color: var(--text);
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+      .shell {
+        width: 100%;
+        max-width: 640px;
+        margin: 0 auto;
+        display: grid;
+        gap: 14px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 2px 4px;
+      }
+      .mark {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        font-size: 1.25rem;
+        color: #fff;
+        background: linear-gradient(145deg, var(--accent), color-mix(in srgb, var(--accent) 55%, #000));
+        box-shadow: 0 8px 20px -10px color-mix(in srgb, var(--accent) 80%, transparent);
+        flex: none;
+      }
+      .brand h1 {
+        margin: 0;
+        font-size: 1.2rem;
+        letter-spacing: -0.01em;
+      }
+      .brand p {
+        margin: 0;
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+      .conn {
+        margin-left: auto;
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 5px 10px;
+        border-radius: 999px;
+        background: var(--warn-soft);
+        color: var(--warn);
+        white-space: nowrap;
+      }
+      .conn.ok {
+        background: var(--ok-soft);
+        color: var(--ok);
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 18px;
+      }
+      .card h2 {
+        margin: 0 0 4px;
+        font-size: 1rem;
+      }
+      .card p.hint {
+        margin: 0 0 14px;
+        font-size: 0.86rem;
+        color: var(--muted);
+      }
+      .status {
+        display: grid;
+        gap: 14px;
+      }
+      .points {
+        display: grid;
+        gap: 2px;
+      }
+      .points .label {
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-weight: 700;
+        color: var(--muted);
+      }
+      .points strong {
+        font-size: clamp(2rem, 9vw, 2.6rem);
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        font-variant-numeric: tabular-nums;
+      }
+      .points .sub {
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+      .chips {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .chip {
+        background: var(--bg);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 9px 10px;
+        display: grid;
+        gap: 1px;
+      }
+      .chip span {
+        font-size: 0.74rem;
+        color: var(--muted);
+      }
+      .chip b {
+        font-size: 0.95rem;
+        font-variant-numeric: tabular-nums;
+      }
+      button {
+        font: inherit;
+        cursor: pointer;
+        border-radius: 12px;
+        border: 1px solid transparent;
+        min-height: 46px;
+        padding: 10px 16px;
+        transition: filter 0.15s ease, background 0.15s ease;
+      }
+      button:disabled {
+        opacity: 0.55;
+        cursor: not-allowed;
+      }
+      button:focus-visible,
+      a:focus-visible,
+      input:focus-visible {
+        outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent);
+        outline-offset: 2px;
+      }
+      .primary {
+        background: var(--accent);
+        color: #fff;
+        font-weight: 700;
+      }
+      .primary:hover:not(:disabled) {
+        filter: brightness(1.06);
+      }
+      .primary.big {
+        width: 100%;
+        min-height: 54px;
+        font-size: 1.02rem;
+      }
+      .ghost {
+        background: var(--bg);
+        border-color: var(--line);
+        color: var(--text);
+        font-weight: 600;
+      }
+      .ghost:hover:not(:disabled) {
+        background: var(--accent-soft);
+        border-color: color-mix(in srgb, var(--accent) 35%, var(--line));
+      }
+      .linklike {
+        background: none;
+        border: 0;
+        color: var(--accent);
+        font-weight: 600;
+        padding: 6px;
+        min-height: 40px;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .row > button {
+        flex: 1 1 auto;
+      }
+      .grid2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin: 12px 0 14px;
+      }
+      label {
+        display: grid;
+        gap: 5px;
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+      input[type="number"] {
+        font: inherit;
+        font-size: 1rem;
+        color: var(--text);
+        background: var(--bg);
+        border: 1px solid var(--line);
+        border-radius: 11px;
+        padding: 10px 12px;
+        min-height: 46px;
+        width: 100%;
+      }
+      .console-card {
+        padding-bottom: 14px;
+      }
+      .console-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+      .pill {
+        font-size: 0.74rem;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: var(--bg);
+        color: var(--muted);
+        border: 1px solid var(--line);
+        white-space: nowrap;
+      }
+      .pill.running {
+        background: var(--warn-soft);
+        color: var(--warn);
+        border-color: transparent;
+      }
+      .pill.ok {
+        background: var(--ok-soft);
+        color: var(--ok);
+        border-color: transparent;
+      }
+      .pill.error {
+        background: var(--err-soft);
+        color: var(--err);
+        border-color: transparent;
+      }
+      .console {
+        margin: 0;
+        min-height: 132px;
+        max-height: 280px;
+        overflow: auto;
+        padding: 12px;
+        border-radius: 12px;
+        background: #0f1219;
+        color: #d7dbe6;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.78rem;
+        line-height: 1.45;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+      }
+      .console .err {
+        color: #ffa8a8;
+      }
+      .console .hint {
+        color: #7d879c;
+      }
+      .result {
+        margin-top: 12px;
+        padding: 12px;
+        border-radius: 12px;
+        background: var(--ok-soft);
+        color: var(--ok);
+        font-size: 0.88rem;
+        font-weight: 600;
+      }
+      .result.error {
+        background: var(--err-soft);
+        color: var(--err);
+      }
+      .history {
+        display: grid;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .hrow {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 9px 11px;
+        border-radius: 11px;
+        background: var(--bg);
+        border: 1px solid var(--line);
+        font-size: 0.84rem;
+      }
+      .hrow .when {
+        color: var(--muted);
+      }
+      .hrow .gain {
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+      }
+      .hrow .gain.up {
+        color: var(--ok);
+      }
+      .empty {
+        margin: 8px 0 0;
+        font-size: 0.86rem;
+        color: var(--muted);
+      }
+      .foot {
+        text-align: center;
+        font-size: 0.76rem;
+        color: var(--muted);
+        padding: 4px 12px 0;
+        line-height: 1.5;
+      }
+      .foot b {
+        color: var(--text);
+      }
+      .notice {
+        margin: 0;
+        padding: 10px 12px;
+        border-radius: 12px;
+        font-size: 0.84rem;
+        background: var(--warn-soft);
+        color: var(--warn);
+      }
+      @media (max-width: 380px) {
+        .grid2 {
+          grid-template-columns: 1fr;
+        }
+        .chips {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="brand">
+        <div class="mark" aria-hidden="true">C</div>
+        <div>
+          <h1>Conquistas</h1>
+          <p>Painel do Microsoft Rewards</p>
+        </div>
+        <span id="conn" class="conn">conectando…</span>
+      </header>
+
+      <section class="card status" aria-labelledby="status-title">
+        <h2 id="status-title" class="sr-only" hidden>Saldo</h2>
+        <div class="points">
+          <span class="label">Saldo atual</span>
+          <strong id="points">—</strong>
+          <span class="sub" id="pointsAt">sem leitura ainda</span>
+        </div>
+        <div class="chips">
+          <div class="chip"><span>PC hoje</span><b id="pcToday">0 / —</b></div>
+          <div class="chip"><span>Celular hoje</span><b id="mobileToday">0 / —</b></div>
+          <div class="chip"><span>Diário hoje</span><b id="dailyToday">0 / 0</b></div>
+        </div>
+        <button id="refresh" class="ghost" type="button">Atualizar dados</button>
+      </section>
+
+      <section class="card" id="loginCard" hidden>
+        <h2>Entrar na conta</h2>
+        <p class="hint">
+          Vai abrir uma janela do navegador <b>na sua máquina</b>, no site oficial da Microsoft.
+          Entre normalmente (senha e 2FA) e volte para esta página. O painel guarda apenas os
+          cookies da sessão — nunca a sua senha.
+        </p>
+        <button id="loginBtn" class="primary big" type="button">Entrar na conta Microsoft</button>
+      </section>
+
+      <section class="card">
+        <h2>Executar</h2>
+        <p class="hint">Ajuste as cotas se quiser um teste curto. A execução abre um navegador na sua máquina.</p>
+        <div class="grid2">
+          <label>Buscas no PC <input id="pc" type="number" min="0" max="100" step="1" inputmode="numeric" /></label>
+          <label>Buscas no celular <input id="mobile" type="number" min="0" max="100" step="1" inputmode="numeric" /></label>
+        </div>
+        <button id="runAll" class="primary big" type="button">Executar tudo</button>
+        <div class="row">
+          <button id="runSearches" class="ghost" type="button">Só buscas</button>
+          <button id="runDaily" class="ghost" type="button">Só o diário</button>
+          <button id="runDry" class="ghost" type="button">Simular</button>
+        </div>
+        <p class="notice" id="sessionNotice" hidden></p>
+      </section>
+
+      <section class="card console-card" aria-labelledby="log-title">
+        <div class="console-head">
+          <h2 id="log-title">Execução</h2>
+          <span id="jobState" class="pill">parado</span>
+        </div>
+        <pre id="console" class="console" aria-live="polite">Nada executado ainda.</pre>
+        <div id="result" class="result" hidden></div>
+      </section>
+
+      <section class="card" aria-labelledby="history-title">
+        <h2 id="history-title">Histórico</h2>
+        <div id="history" class="history"></div>
+        <p id="historyEmpty" class="empty">Nenhuma execução registrada.</p>
+      </section>
+
+      <footer class="foot">
+        <p>
+          Roda na sua máquina e escuta só em <b>localhost</b>. O painel nunca pede sua senha:
+          o login acontece no site oficial da Microsoft.
+        </p>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        "use strict";
+
+        var $ = function (id) {
+          return document.getElementById(id);
+        };
+        var state = { busy: false, lastJobId: null, lastLogCount: 0, defaultsApplied: false, currentJob: null };
+
+        function fmt(value) {
+          if (value === null || value === undefined) return "—";
+          try {
+            return new Intl.NumberFormat("pt-BR").format(value);
+          } catch (err) {
+            return String(value);
+          }
+        }
+
+        function moment(iso) {
+          if (!iso) return "";
+          var date = new Date(iso);
+          if (isNaN(date.getTime())) return "";
+          return date.toLocaleString("pt-BR", {
+            day: "2-digit",
+            month: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+          });
+        }
+
+        function api(path, options) {
+          var init = options || {};
+          init.headers = Object.assign({ "X-Conquistas": "1" }, init.headers || {});
+          return fetch(path, init).then(function (response) {
+            return response
+              .json()
+              .catch(function () {
+                return {};
+              })
+              .then(function (body) {
+                if (!response.ok) {
+                  throw new Error(body.error || "Falha na requisição (" + response.status + ")");
+                }
+                return body;
+              });
+          });
+        }
+
+        function setBusy(busy) {
+          state.busy = busy;
+          ["runAll", "runSearches", "runDaily", "runDry", "loginBtn"].forEach(function (id) {
+            var el = $(id);
+            if (el) el.disabled = busy;
+          });
+        }
+
+        function renderJob(job) {
+          if (!job) return;
+          state.currentJob = job;
+          if (job.id !== state.lastJobId) {
+            state.lastJobId = job.id;
+            state.lastLogCount = 0;
+            $("console").textContent = "";
+            $("result").hidden = true;
+          }
+
+          var lines = job.logs || [];
+          if (lines.length > state.lastLogCount) {
+            var consoleEl = $("console");
+            var fragment = document.createDocumentFragment();
+            lines.slice(state.lastLogCount).forEach(function (line) {
+              var time = moment(line.at);
+              var row = document.createElement("div");
+              if (line.level === "ERROR") row.className = "err";
+              row.textContent = (time ? time + "  " : "") + line.message;
+              fragment.appendChild(row);
+            });
+            consoleEl.appendChild(fragment);
+            consoleEl.scrollTop = consoleEl.scrollHeight;
+            state.lastLogCount = lines.length;
+          }
+
+          var badge = $("jobState");
+          badge.className = "pill";
+          if (job.status === "running") {
+            badge.classList.add("running");
+            badge.textContent = job.kind === "login" ? "aguardando login" : "executando";
+          } else if (job.status === "ok") {
+            badge.classList.add("ok");
+            badge.textContent = "concluído";
+          } else {
+            badge.classList.add("error");
+            badge.textContent = "erro";
+          }
+
+          if (job.status !== "running") {
+            var box = $("result");
+            box.hidden = false;
+            box.className = job.status === "ok" ? "result" : "result error";
+            if (job.status === "ok" && job.result && job.result.gained !== undefined) {
+              var gained = job.result.gained;
+              box.textContent =
+                "Saldo: " +
+                fmt(job.result.points_before) +
+                " → " +
+                fmt(job.result.points_after) +
+                (gained === null || gained === undefined ? "" : "  (+" + fmt(gained) + " pontos)");
+            } else if (job.status === "ok" && job.kind === "login") {
+              box.textContent = "Login concluído. Sessão salva.";
+            } else {
+              box.textContent = job.error || "A execução terminou com erro.";
+            }
+          }
+
+          setBusy(job.status === "running");
+        }
+
+        function renderState(data) {
+          $("conn").textContent = "local • v" + data.version;
+          $("conn").className = "conn ok";
+
+          if (data.points) {
+            $("points").textContent = fmt(data.points.value);
+            $("pointsAt").textContent = "lido em " + moment(data.points.at);
+          } else {
+            $("points").textContent = "—";
+            $("pointsAt").textContent = "sem leitura ainda";
+          }
+
+          var today = data.today || {};
+          $("pcToday").textContent = fmt(today.pc || 0) + " / " + fmt(data.targets.pc);
+          $("mobileToday").textContent = fmt(today.mobile || 0) + " / " + fmt(data.targets.mobile);
+          $("dailyToday").textContent = fmt(today.daily_done || 0) + " / " + fmt(today.daily_total || 0);
+
+          if (!state.defaultsApplied) {
+            $("pc").value = data.targets.pc;
+            $("mobile").value = data.targets.mobile;
+            state.defaultsApplied = true;
+          }
+
+          var hasSession = data.session && data.session.exists;
+          $("loginCard").hidden = !!hasSession;
+          var notice = $("sessionNotice");
+          if (hasSession) {
+            notice.hidden = false;
+            notice.textContent =
+              "Sessão salva" + (data.session.updated_at ? " em " + moment(data.session.updated_at) : "") + ".";
+          } else {
+            notice.hidden = false;
+            notice.textContent = "Nenhuma sessão salva ainda — use “Entrar na conta” primeiro.";
+          }
+
+          var history = data.history || [];
+          var box = $("history");
+          box.replaceChildren();
+          $("historyEmpty").hidden = history.length > 0;
+          history.forEach(function (run) {
+            var row = document.createElement("div");
+            row.className = "hrow";
+
+            var when = document.createElement("span");
+            when.className = "when";
+            when.textContent = moment(run.started_at);
+
+            var gain = document.createElement("span");
+            gain.className = "gain";
+            if (run.points_before !== null && run.points_after !== null) {
+              var delta = run.points_after - run.points_before;
+              gain.textContent = (delta > 0 ? "+" : "") + fmt(delta) + " pts";
+              if (delta > 0) gain.classList.add("up");
+            } else {
+              gain.textContent = run.status;
+            }
+
+            row.appendChild(when);
+            row.appendChild(gain);
+            box.appendChild(row);
+          });
+
+          if (data.job) {
+            renderJob(data.job);
+          }
+        }
+
+        function loadState() {
+          return api("/api/state")
+            .then(renderState)
+            .catch(function (error) {
+              $("conn").textContent = "offline";
+              $("conn").className = "conn";
+              console.warn(error);
+            });
+        }
+
+        function start(kind, options) {
+          var path = kind === "login" ? "/api/login" : "/api/run";
+          var payload = options || {};
+          setBusy(true);
+          api(path, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          })
+            .then(function (data) {
+              renderJob(data.job);
+              loadState();
+            })
+            .catch(function (error) {
+              setBusy(false);
+              var box = $("result");
+              box.hidden = false;
+              box.className = "result error";
+              box.textContent = error.message;
+            });
+        }
+
+        function quotas() {
+          var pc = parseInt($("pc").value, 10);
+          var mobile = parseInt($("mobile").value, 10);
+          return {
+            pc: isNaN(pc) ? null : Math.max(0, Math.min(100, pc)),
+            mobile: isNaN(mobile) ? null : Math.max(0, Math.min(100, mobile)),
+          };
+        }
+
+        $("runAll").addEventListener("click", function () {
+          start("run", Object.assign({ only: "all" }, quotas()));
+        });
+        $("runSearches").addEventListener("click", function () {
+          start("run", Object.assign({ only: "searches" }, quotas()));
+        });
+        $("runDaily").addEventListener("click", function () {
+          start("run", { only: "daily" });
+        });
+        $("runDry").addEventListener("click", function () {
+          start("run", Object.assign({ only: "all", dry_run: true }, quotas()));
+        });
+        $("loginBtn").addEventListener("click", function () {
+          start("login", {});
+        });
+        $("refresh").addEventListener("click", loadState);
+
+        function tick() {
+          loadState().finally(function () {
+            setTimeout(tick, state.busy ? 1000 : 4000);
+          });
+        }
+
+        tick();
+      })();
+    </script>
+  </body>
+</html>

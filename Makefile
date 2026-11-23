@@ -1,4 +1,4 @@
-.PHONY: help install browsers login run dry status site test lint format doctor clean
+.PHONY: help install browsers login run dry status site panel test lint format doctor clean
 
 help:
 	@echo "install  - cria .venv, instala o pacote e o Chromium"
@@ -9,6 +9,7 @@ help:
 	@echo "test     - pytest"
 	@echo "lint     - ruff check"
 	@echo "site     - serve o site local em http://localhost:8000"
+	@echo "panel    - abre o painel web (estilo Zunder)"
 	@echo "format   - ruff format"
 
 install:
@@ -33,6 +34,9 @@ status:
 
 site:
 	python3 -m http.server 8000 --directory docs
+
+panel:
+	.venv/bin/conquistas serve
 
 doctor:
 	.venv/bin/conquistas doctor
