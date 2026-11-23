@@ -26,13 +26,23 @@ Ganho nesta execução: +200 pontos
 
 ## Site: todos os projetos do tópico `microsoft-rewards`
 
-**Já está no ar — é só abrir e usar:**
+**Já está no ar — é só abrir e usar (zero cliques):**
+<https://htmlpreview.github.io/?https://raw.githubusercontent.com/Sr-agente208/Conquistas-/arena/8c858577-conquistas/docs/projetos-offline.html>
+
+Alternativa, com um aviso intermediário do próprio serviço:
 <https://raw.githack.com/Sr-agente208/Conquistas-/arena/8c858577-conquistas/docs/projetos-offline.html>
 
-Sem instalar nada, sem rodar comando e sem login. O link serve
-`docs/projetos-offline.html` (página única, com CSS/JS/dados embutidos) através do
-**raw.githack**, um CDN que entrega arquivos do GitHub com o `Content-Type` correto
-(`text/html`). Como aponta para a branch, atualizar os arquivos atualiza o site.
+Sem instalar nada, sem rodar comando e sem login. Os dois links renderizam
+`docs/projetos-offline.html` (página única, com CSS/JS/dados embutidos) direto da branch:
+
+- **htmlpreview** busca o arquivo raw do GitHub e o renderiza como página — zero cliques,
+  sem cache, sempre na versão atual.
+- **raw.githack** serve o mesmo arquivo com `text/html`, mas exibe a tela
+  “External Content Notice” (proteção contra phishing) antes de abrir.
+
+Ambos são serviços de terceiros. Para um link definitivo e próprio, ative o GitHub Pages
+(instruções abaixo) e use `https://sr-agente208.github.io/Conquistas-/`, que dispensa
+intermediários.
 
 > **Por que não no Supabase?** Testado e descartado: tanto Edge Functions quanto o
 > Storage do Supabase reescrevem o `Content-Type` para `text/plain` — o navegador exibe
