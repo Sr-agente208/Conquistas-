@@ -1,0 +1,3049 @@
+<!-- Versão em arquivo único, gerada por scripts/build_standalone.py.
+     Abra este arquivo direto no navegador: não precisa de servidor. -->
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#5b4bdb" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e1017" media="(prefers-color-scheme: dark)" />
+    <title>Microsoft Rewards no GitHub — 71 projetos para explorar</title>
+    <meta
+      name="description"
+      content="Lista completa e pesquisável dos projetos públicos do tópico microsoft-rewards no GitHub. Filtre por linguagem, ordene por estrelas ou atualização e abra no celular."
+    />
+    <style>
+/* ------------------------------------------------------------------ *
+ * Conquistas — lista do tópico microsoft-rewards
+ * Mobile-first, sem dependências, tema claro/escuro automático.
+ * ------------------------------------------------------------------ */
+
+:root {
+  --bg: #f5f6fb;
+  --surface: #ffffff;
+  --surface-2: #eef0f7;
+  --text: #14161d;
+  --muted: #5c6579;
+  --border: #e2e5ef;
+  --accent: #5b4bdb;
+  --accent-strong: #4737c4;
+  --accent-soft: #ece9ff;
+  --star: #c98a00;
+  --danger-bg: #fdeaea;
+  --danger-text: #9d2020;
+  --shadow: 0 1px 2px rgb(20 22 29 / 6%), 0 10px 30px -18px rgb(20 22 29 / 35%);
+  --radius: 18px;
+  --wrap: 1120px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d0f16;
+    --surface: #161a24;
+    --surface-2: #1e2330;
+    --text: #eef1f7;
+    --muted: #a2aabd;
+    --border: #272d3c;
+    --accent: #ab9dff;
+    --accent-strong: #c3b8ff;
+    --accent-soft: #242046;
+    --star: #f0c05a;
+    --danger-bg: #3a1d1d;
+    --danger-text: #ffb4b4;
+    --shadow: 0 1px 2px rgb(0 0 0 / 40%), 0 18px 40px -24px rgb(0 0 0 / 70%);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* O atributo hidden precisa vencer display:grid/flex declarados adiante. */
+[hidden] {
+  display: none !important;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent-strong);
+  text-underline-offset: 2px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: 18px;
+}
+
+.skip {
+  position: absolute;
+  left: -999px;
+  top: 8px;
+  padding: 10px 16px;
+  background: var(--surface);
+  border-radius: 10px;
+  z-index: 50;
+}
+.skip:focus {
+  left: 12px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* ---------------- hero ---------------- */
+.hero {
+  background:
+    radial-gradient(120% 140% at 100% 0%, color-mix(in srgb, var(--accent) 26%, transparent), transparent 60%),
+    linear-gradient(180deg, color-mix(in srgb, var(--accent) 10%, var(--bg)), var(--bg));
+  padding: 34px 0 22px;
+  border-bottom: 1px solid var(--border);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+  padding: 6px 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+  border-radius: 999px;
+}
+
+.eyebrow code {
+  font-size: 0.82rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.eyebrow .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.hero h1 {
+  margin: 0 0 10px;
+  font-size: clamp(1.75rem, 6vw, 2.7rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.lede {
+  margin: 0;
+  max-width: 58ch;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.lede strong {
+  color: var(--text);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 22px 0 0;
+}
+
+.stats > div {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px 14px;
+}
+
+.stats dt {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.stats dd {
+  margin: 2px 0 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------- toolbar ---------------- */
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: grid;
+  gap: 10px;
+  padding: 12px 0 10px;
+  margin-inline: -18px;
+  padding-inline: 18px;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 50px;
+  padding: 0 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+.search:focus-within {
+  border-color: var(--accent);
+  outline: 3px solid color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.search input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  padding: 12px 0;
+}
+.search input::placeholder {
+  color: var(--muted);
+}
+.search input:focus {
+  outline: none;
+}
+
+.chips {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.chips::-webkit-scrollbar {
+  display: none;
+}
+
+.chip {
+  flex: none;
+  min-height: 42px;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.chip[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.chip .lang-count {
+  opacity: 0.72;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------- list head ---------------- */
+.listhead {
+  display: grid;
+  gap: 10px;
+  padding: 16px 0 12px;
+}
+
+.count {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.listhead-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  justify-content: space-between;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 0.9rem;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.toggle input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--accent);
+}
+
+.sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.sort select {
+  min-height: 44px;
+  max-width: 62vw;
+  padding: 8px 12px;
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+/* ---------------- cards ---------------- */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  padding-bottom: 8px;
+  /* evita que a barra fixa cubra o início da lista ao pular para ela */
+  scroll-margin-top: 128px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.card:hover {
+  border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
+}
+
+.card:active {
+  transform: scale(0.995);
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  flex: none;
+}
+
+.titles {
+  min-width: 0;
+  flex: 1;
+}
+
+.repo {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+
+.owner {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.rank {
+  flex: none;
+  min-width: 34px;
+  text-align: center;
+  padding: 2px 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  background: var(--surface-2);
+  border-radius: 8px;
+}
+
+.desc {
+  margin: 0;
+  font-size: 0.94rem;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+
+.desc.is-empty {
+  font-style: italic;
+}
+
+.topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.topic {
+  padding: 3px 9px;
+  font-size: 0.74rem;
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+  border-radius: 999px;
+  overflow-wrap: anywhere;
+}
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.metric {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.metric svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.metric.stars {
+  color: var(--star);
+  font-weight: 600;
+}
+
+.lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lang-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--muted);
+  flex: none;
+}
+
+.badge {
+  padding: 2px 9px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--danger-text);
+  background: var(--danger-bg);
+  border-radius: 999px;
+}
+
+.card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 2px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.updated {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 8px 12px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+.cta svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+/* ---------------- como usar ---------------- */
+.howto {
+  margin: 26px 0 0;
+  padding: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.howto h2 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+}
+
+.howto ol {
+  margin: 0;
+  padding-left: 1.2em;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.howto ol li {
+  margin-bottom: 6px;
+}
+
+.howto ol li strong {
+  color: var(--text);
+}
+
+.howto-extra {
+  margin: 12px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+
+.howto-extra em {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ---------------- empty / notice ---------------- */
+.empty {
+  margin: 26px 0;
+  padding: 28px 20px;
+  text-align: center;
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+}
+
+.empty-title {
+  margin: 0 0 6px;
+  font-weight: 700;
+}
+
+.empty-text {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+.btn {
+  min-height: 46px;
+  padding: 10px 18px;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.notice {
+  margin: 26px 0 8px;
+  padding: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.notice h2 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.notice p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* ---------------- footer ---------------- */
+.footer {
+  margin-top: 26px;
+  padding: 24px 0 34px;
+  border-top: 1px solid var(--border);
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+
+.footer p {
+  margin: 0 0 6px;
+}
+
+.footer-small {
+  font-size: 0.8rem;
+}
+
+/* ---------------- telas maiores ---------------- */
+@media (min-width: 620px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .hero {
+    padding: 48px 0 28px;
+  }
+
+  .toolbar {
+    padding: 14px 0 12px;
+  }
+}
+
+@media (min-width: 980px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .wrap {
+    padding-inline: 26px;
+  }
+
+  .toolbar {
+    margin-inline: -26px;
+    padding-inline: 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .card {
+    transition: none;
+  }
+}
+
+</style>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%AD%90%3C/text%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <a class="skip" href="#lista">Pular para a lista</a>
+
+    <header class="hero">
+      <div class="wrap">
+        <p class="eyebrow">
+          <span class="dot" aria-hidden="true"></span>
+          Tópico do GitHub · <code>microsoft-rewards</code>
+        </p>
+        <h1>Automação do Microsoft&nbsp;Rewards</h1>
+        <p class="lede">
+          Todos os <strong id="repoTotal">71</strong> projetos públicos do tópico, em uma lista
+          feita para ler no celular: busque, filtre por linguagem e ordene como quiser.
+        </p>
+        <dl class="stats" id="stats">
+          <div><dt>Projetos</dt><dd id="statRepos">71</dd></div>
+          <div><dt>Estrelas somadas</dt><dd id="statStars">4.943</dd></div>
+          <div><dt>Linguagens</dt><dd id="statLangs">15</dd></div>
+          <div><dt>Ativos em 30 dias</dt><dd id="statActive">—</dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="toolbar" aria-label="Busca e filtros">
+        <label class="search" for="q">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="icon">
+            <circle cx="11" cy="11" r="7" />
+            <path d="m16.5 16.5 4 4" />
+          </svg>
+          <input
+            id="q"
+            type="search"
+            inputmode="search"
+            autocomplete="off"
+            placeholder="Buscar nome, descrição ou assunto"
+            aria-describedby="count"
+          />
+        </label>
+
+        <div class="chips" id="langChips" role="group" aria-label="Filtrar por linguagem"></div>
+      </section>
+
+      <section class="listhead" aria-label="Resultado e ordenação">
+        <p id="count" class="count" aria-live="polite"></p>
+        <div class="listhead-actions">
+          <label class="toggle">
+            <input type="checkbox" id="hideArchived" />
+            <span>Ocultar arquivados</span>
+          </label>
+          <label class="sort">
+            <span class="sort-label">Ordenar</span>
+            <select id="sort">
+              <option value="stars">Mais estrelas</option>
+              <option value="updated">Atualizados há menos tempo</option>
+              <option value="forks">Mais forks</option>
+              <option value="name">Nome (A–Z)</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section id="lista" class="grid" aria-label="Repositórios"></section>
+
+      <div id="empty" class="empty" hidden>
+        <p class="empty-title">Nada encontrado com esses filtros.</p>
+        <p class="empty-text">Tente outra palavra ou limpe os filtros para ver os 71 projetos.</p>
+        <button type="button" id="clearFilters" class="btn">Limpar filtros</button>
+      </div>
+
+
+      <aside class="howto" aria-labelledby="howto-title">
+        <h2 id="howto-title">Como usar</h2>
+        <ol>
+          <li><strong>Busque</strong> pelo nome do projeto, pelo autor ou por uma palavra da descrição — acentos não importam.</li>
+          <li><strong>Filtre</strong> tocando em uma linguagem na barra do topo (ex.: Python, TypeScript) e toque em “Todos” para voltar.</li>
+          <li><strong>Ordene</strong> por estrelas, por atualização recente, por forks ou por nome.</li>
+          <li><strong>Abra</strong> o cartão para ir ao repositório no GitHub, em uma nova aba.</li>
+        </ol>
+        <p class="howto-extra">
+          No celular, o menu do navegador → <em>Adicionar à tela de início</em> deixa a lista como um
+          atalho. Sem internet? Baixe a
+          <a href="projetos-offline.html" download>versão em arquivo único</a> e abra direto no
+          navegador — ela já vem com os dados embutidos.
+        </p>
+      </aside>
+
+      <aside class="notice">
+        <h2>Antes de usar qualquer um deles</h2>
+        <p>
+          Automatizar os pontos <strong>viola o Contrato de Serviços da Microsoft</strong> e pode
+          levar à suspensão da conta. Estes são projetos de terceiros, sem qualquer vínculo com a
+          Microsoft ou com o Conquistas: leia o código e o README antes de executar, e nunca informe
+          sua senha fora do site oficial.
+        </p>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <p>
+          Dados coletados da API do GitHub em <time id="generatedAt">—</time> ·
+          <a href="https://github.com/topics/microsoft-rewards" target="_blank" rel="noopener"
+            >ver o tópico original</a
+          >
+        </p>
+        <p class="footer-small">
+          Página estática, sem rastreadores. Parte do projeto
+          <a href="https://github.com/Sr-agente208/Conquistas-" target="_blank" rel="noopener"
+            >Conquistas</a
+          >.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+// Gerado por scripts/fetch_repos.py — não edite à mão.
+window.REPOS_DATA = {
+  "topic": "microsoft-rewards",
+  "source_url": "https://github.com/topics/microsoft-rewards",
+  "generated_at": "2026-11-23T10:55:14+00:00",
+  "total": 71,
+  "total_stars": 4943,
+  "languages": {
+    "Python": 17,
+    "TypeScript": 16,
+    "JavaScript": 15,
+    "Sem linguagem": 6,
+    "HTML": 4,
+    "Java": 2,
+    "Kotlin": 2,
+    "PowerShell": 2,
+    "AutoHotkey": 1,
+    "Batchfile": 1,
+    "C": 1,
+    "C#": 1,
+    "Jupyter Notebook": 1,
+    "Shell": 1,
+    "Visual Basic .NET": 1
+  },
+  "repos": [
+    {
+      "full_name": "TheNetsky/Microsoft-Rewards-Script",
+      "owner": "TheNetsky",
+      "avatar": "https://avatars.githubusercontent.com/u/56271887?v=4",
+      "description": "Automated Microsoft Rewards script, using TypeScript and Playwright.",
+      "url": "https://github.com/TheNetsky/Microsoft-Rewards-Script",
+      "homepage": "",
+      "stars": 1245,
+      "forks": 267,
+      "open_issues": 15,
+      "language": "TypeScript",
+      "topics": [
+        "bot",
+        "docker",
+        "microsoft-rewards-bot",
+        "microsoft-rewards-farmer",
+        "microsoft-rewards-script",
+        "playwright",
+        "script",
+        "typescript"
+      ],
+      "pushed_at": "2026-10-31T17:20:50Z",
+      "created_at": "2023-09-25T10:09:35Z",
+      "archived": false,
+      "fork": false,
+      "license": "GPL-3.0"
+    },
+    {
+      "full_name": "charlesbel/Microsoft-Rewards-Farmer",
+      "owner": "charlesbel",
+      "avatar": "https://avatars.githubusercontent.com/u/37935727?v=4",
+      "description": "A simple bot that uses selenium to farm Microsoft Rewards written in Python",
+      "url": "https://github.com/charlesbel/Microsoft-Rewards-Farmer",
+      "homepage": "",
+      "stars": 1137,
+      "forks": 304,
+      "open_issues": 102,
+      "language": "Python",
+      "topics": [
+        "bot",
+        "farm-microsoft-rewards",
+        "python",
+        "python-script",
+        "selenium"
+      ],
+      "pushed_at": "2024-08-05T01:55:49Z",
+      "created_at": "2020-07-25T18:29:53Z",
+      "archived": true,
+      "fork": false,
+      "license": "MIT"
+    },
+    {
+      "full_name": "chiihero/Microsoft-Rewards-Script",
+      "owner": "chiihero",
+      "avatar": "https://avatars.githubusercontent.com/u/26246956?v=4",
+      "description": "微软奖励脚本，基于他人脚本实现中文环境的本地化",
+      "url": "https://github.com/chiihero/Microsoft-Rewards-Script",
+      "homepage": "",
+      "stars": 705,
+      "forks": 115,
+      "open_issues": 12,
+      "language": "TypeScript",
+      "topics": [
+        "microsoft",
+        "rewards"
+      ],
+      "pushed_at": "2026-11-20T10:55:14Z",
+      "created_at": "2025-06-11T10:30:28Z",
+      "archived": false,
+      "fork": false,
+      "license": "GPL-3.0"
+    },
+    {
+      "full_name": "spin311/MicrosoftRewardsWebsite",
+      "owner": "spin311",
+      "avatar": "https://avatars.githubusercontent.com/u/79504899?v=4",
+      "description": "Browser extension (Chrome & Firefox) that runs your daily Microsoft Rewards Bing searches for you. Free and open source (MIT).",
+      "url": "https://github.com/spin311/MicrosoftRewardsWebsite",
+      "homepage": "https://svitspindler.com/microsoft-automatic-rewards",
+      "stars": 684,
+      "forks": 24,
+      "open_issues": 7,
+      "language": "TypeScript",
+      "topics": [
+        "bing",
+        "bing-rewards",
+        "browser-extension",
+        "chrome-extension",
+        "firefox-addon",
+        "flutter",
+        "open-source",
+        "react",
+        "rewards",
+        "typescript",
+        "wxt"
+      ],
+      "pushed_at": "2026-11-14T18:37:10Z",
+      "created_at": "2023-11-18T14:18:33Z",
+      "archived": false,
+      "fork": false,
+      "license": "MIT"
+    },
+    {
+      "full_name": "safarsin/AutoRewarder",
+      "owner": "safarsin",
+      "avatar": "https://avatars.githubusercontent.com/u/144455077?v=4",
+      "description": "An advanced, set-and-forget automation tool for Microsoft Rewards. AutoRewarder performs Bing searches for PC and mobile point collection, collects Daily Sets, and uses mathematically driven, human-like input simulation (W3C Actions, Bezier curves, and smart scrolling). Packaged as an executable app for a seamless, plug-and-play experience",
+      "url": "https://github.com/safarsin/AutoRewarder",
+      "homepage": "https://github.com/safarsin/AutoRewarder/blob/main/USER_GUIDE.md",
+      "stars": 465,
+      "forks": 32,
+      "open_issues": 12,
+      "language": "Python",
+      "topics": [
+        "automation",
+        "bing-search",
+        "bot",
+        "inno-setup",
+        "microsoft-rewards-bot",
+        "microsoft-rewards-farmer",
+        "pyinstaller",
+        "pywebview",
+        "reward",
+        "rewards",
+        "selenium"
+      ],
+      "pushed_at": "2026-11-15T22:12:17Z",
+      "created_at": "2025-09-28T17:20:30Z",
+      "archived": false,
+      "fork": false,
+      "license": "MIT"
+    },
+    {
+      "full_name": "cairn-script/Microsoft-Rewards-Bot",
+      "owner": "cairn-script",
+      "avatar": "https://avatars.githubusercontent.com/u/278939952?v=4",
+      "description": "An automated Microsoft Rewards bot  in GO",
+      "url": "https://github.com/cairn-script/Microsoft-Rewards-Bot",
+      "homepage": "",
+      "stars": 151,
+      "forks": 43,
+      "open_issues": 0,
+      "language": null,
+      "topics": [
+        "bing-rewards",
+        "bot",
+        "microsoft-research",
+        "microsoft-rewards-auto-bot",
+        "microsoft-rewards-autofarm",
+        "microsoft-rewards-bot",
+        "microsoft-rewards-farmer",
+        "microsoft-rewards-free",
+        "microsoft-rewards-free-points-generator",
+        "microsoft-rewards-installer",
+        "microsoft-rewards-script",
+        "rewards",
+        "rewards-desk",
+        "script"
+      ],
+      "pushed_at": "2026-09-12T16:00:28Z",
+      "created_at": "2025-10-23T08:40:44Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "haq/microsoft-rewards-bot",
+      "owner": "haq",
+      "avatar": "https://avatars.githubusercontent.com/u/19542414?v=4",
+      "description": "docker image for Microsoft-Rewards-Farmer by charlesbel",
+      "url": "https://github.com/haq/microsoft-rewards-bot",
+      "homepage": "",
+      "stars": 122,
+      "forks": 14,
+      "open_issues": 2,
+      "language": "Shell",
+      "topics": [
+        "docker",
+        "python"
+      ],
+      "pushed_at": "2025-01-07T19:22:39Z",
+      "created_at": "2023-02-21T19:59:42Z",
+      "archived": true,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "legendsayantan/MsRewards",
+      "owner": "legendsayantan",
+      "avatar": "https://avatars.githubusercontent.com/u/69689739?v=4",
+      "description": "Earn Microsoft Rewards Points in the fastest and easiest way, just using an Android Device.",
+      "url": "https://github.com/legendsayantan/MsRewards",
+      "homepage": "https://rewards.is-an.app",
+      "stars": 76,
+      "forks": 6,
+      "open_issues": 4,
+      "language": null,
+      "topics": [
+        "android-application",
+        "bot",
+        "microsoft-rewards-bot",
+        "microsoft-rewards-farmer",
+        "rewards"
+      ],
+      "pushed_at": "2025-07-11T17:56:47Z",
+      "created_at": "2023-07-13T11:17:56Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "mgrimace/rewards-dashboard",
+      "owner": "mgrimace",
+      "avatar": "https://avatars.githubusercontent.com/u/55518507?v=4",
+      "description": "A companion dashboard for the microsoft-rewards-script.",
+      "url": "https://github.com/mgrimace/rewards-dashboard",
+      "homepage": "",
+      "stars": 64,
+      "forks": 14,
+      "open_issues": 3,
+      "language": "JavaScript",
+      "topics": [
+        "dashboard",
+        "docker",
+        "microsoft-rewards-bot",
+        "microsoft-rewards-script"
+      ],
+      "pushed_at": "2026-11-20T22:37:02Z",
+      "created_at": "2026-07-09T23:00:35Z",
+      "archived": false,
+      "fork": false,
+      "license": "MIT"
+    },
+    {
+      "full_name": "SkyBlue997/MicrosoftRewardsPilot",
+      "owner": "SkyBlue997",
+      "avatar": "https://avatars.githubusercontent.com/u/74125386?v=4",
+      "description": "Self-hosted MicrosoftRewards engine, lightweight | 微软奖励自动答题搜索，多账号托管 | 自己ホスト型MicrosoftRewardsエンジン、軽量",
+      "url": "https://github.com/SkyBlue997/MicrosoftRewardsPilot",
+      "homepage": "",
+      "stars": 57,
+      "forks": 12,
+      "open_issues": 1,
+      "language": "TypeScript",
+      "topics": [
+        "automation",
+        "bot",
+        "cron",
+        "docker",
+        "playwright",
+        "typescript"
+      ],
+      "pushed_at": "2026-10-04T11:02:15Z",
+      "created_at": "2025-06-07T22:14:16Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "max9836/microsoft-rewards-automator",
+      "owner": "max9836",
+      "avatar": "https://avatars.githubusercontent.com/u/158651270?v=4",
+      "description": "Looking for a user-friendly and easy-to-use Automator? The Microsoft Rewards Automator is designed to automate Bing searches and help you earn Microsoft Rewards points. Contact us by sending an email below, and we'll get back to you within 3 weekdays.",
+      "url": "https://github.com/max9836/microsoft-rewards-automator",
+      "homepage": "https://bit.ly/4gInHIJ",
+      "stars": 34,
+      "forks": 2,
+      "open_issues": 1,
+      "language": null,
+      "topics": [
+        "microsoft-rewards-auto-bot",
+        "microsoft-rewards-autofarm",
+        "microsoft-rewards-farmer",
+        "microsoft-rewards-free-points-generator",
+        "microsoft-rewards-free-points-hack"
+      ],
+      "pushed_at": "2025-06-30T07:54:13Z",
+      "created_at": "2024-02-03T01:32:49Z",
+      "archived": true,
+      "fork": false,
+      "license": "MIT"
+    },
+    {
+      "full_name": "themorajr/ms-reward-bot",
+      "owner": "themorajr",
+      "avatar": "https://avatars.githubusercontent.com/u/42457039?v=4",
+      "description": "This extension helps you earn Microsoft rewards by automatically searching Bing with random text. It works on Chrome and Edge browsers. You can set the number of searches and the time interval between them. The extension is easy to use and does not collect any personal data.",
+      "url": "https://github.com/themorajr/ms-reward-bot",
+      "homepage": "",
+      "stars": 30,
+      "forks": 12,
+      "open_issues": 0,
+      "language": "JavaScript",
+      "topics": [
+        "chrome",
+        "chrome-extension",
+        "edge-extension",
+        "javascript",
+        "microsoft-edge",
+        "microsoft-edge-extension"
+      ],
+      "pushed_at": "2026-08-28T01:49:42Z",
+      "created_at": "2023-03-23T05:39:43Z",
+      "archived": false,
+      "fork": false,
+      "license": "MIT"
+    },
+    {
+      "full_name": "greybax/MSEdgeSearchClicker",
+      "owner": "greybax",
+      "avatar": "https://avatars.githubusercontent.com/u/3235047?v=4",
+      "description": "Microsoft Edge browser search clicker with random words",
+      "url": "https://github.com/greybax/MSEdgeSearchClicker",
+      "homepage": "http://alfilatov.com/MSEdgeSearchClicker/",
+      "stars": 18,
+      "forks": 15,
+      "open_issues": 0,
+      "language": "TypeScript",
+      "topics": [
+        "automation",
+        "automation-ui",
+        "bing",
+        "bing-rewards",
+        "bing-search",
+        "bing-search-rewards",
+        "clicker",
+        "edge",
+        "edge-clicker",
+        "microsoft",
+        "ms",
+        "ms-edge",
+        "ms-edge-search-clicker",
+        "ms-rewards",
+        "msrewards",
+        "rewards",
+        "rewards-bot",
+        "search",
+        "search-clicker"
+      ],
+      "pushed_at": "2025-03-18T17:23:04Z",
+      "created_at": "2022-09-28T00:03:52Z",
+      "archived": false,
+      "fork": false,
+      "license": "MIT"
+    },
+    {
+      "full_name": "wangixangya/Microsoft-Rewards-Script",
+      "owner": "wangixangya",
+      "avatar": "https://avatars.githubusercontent.com/u/86523884?v=4",
+      "description": "微软积分自动化 · v5.0.0 · 中文面板 · CN 补丁镜像 · 单文件包 | Microsoft Rewards automation with a Chinese panel, CN-patched image and self-hosted release pipeline",
+      "url": "https://github.com/wangixangya/Microsoft-Rewards-Script",
+      "homepage": "https://github.com/wangixangya/Microsoft-Rewards-Script",
+      "stars": 15,
+      "forks": 8,
+      "open_issues": 0,
+      "language": "TypeScript",
+      "topics": [
+        "automation",
+        "chinese",
+        "control-api",
+        "docker",
+        "nodejs",
+        "patchright",
+        "qinglong",
+        "self-hosted",
+        "typescript",
+        "web-panel"
+      ],
+      "pushed_at": "2026-11-22T21:00:50Z",
+      "created_at": "2026-09-06T02:54:16Z",
+      "archived": false,
+      "fork": false,
+      "license": "GPL-3.0"
+    },
+    {
+      "full_name": "NT101-lc/PrixAuto",
+      "owner": "NT101-lc",
+      "avatar": "https://avatars.githubusercontent.com/u/184258341?v=4",
+      "description": "PrixAuto: free open-source Microsoft Rewards bot for multiple accounts (Windows, Linux)",
+      "url": "https://github.com/NT101-lc/PrixAuto",
+      "homepage": "https://nt101-lc.github.io/PrixAuto/",
+      "stars": 13,
+      "forks": 1,
+      "open_issues": 2,
+      "language": "Python",
+      "topics": [
+        "automation",
+        "bing-rewards",
+        "microsoft-rewards-bot",
+        "playwright",
+        "python",
+        "windows"
+      ],
+      "pushed_at": "2026-11-20T09:58:00Z",
+      "created_at": "2026-10-20T06:18:57Z",
+      "archived": false,
+      "fork": false,
+      "license": "MIT"
+    },
+    {
+      "full_name": "floheitzmann/Microsoft-Rewards-Farmer",
+      "owner": "floheitzmann",
+      "avatar": "https://avatars.githubusercontent.com/u/7592093?v=4",
+      "description": "A bot to farm Microsoft Reward Points.",
+      "url": "https://github.com/floheitzmann/Microsoft-Rewards-Farmer",
+      "homepage": "",
+      "stars": 12,
+      "forks": 3,
+      "open_issues": 2,
+      "language": "Java",
+      "topics": [
+        "java",
+        "microsoft",
+        "selenium",
+        "selenium-java",
+        "selenium-webdriver"
+      ],
+      "pushed_at": "2019-04-08T14:23:42Z",
+      "created_at": "2019-02-21T17:54:15Z",
+      "archived": true,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "tungdo0602/MSRewardBot",
+      "owner": "tungdo0602",
+      "avatar": "https://avatars.githubusercontent.com/u/89498812?v=4",
+      "description": "A bot that do auto search and gain points",
+      "url": "https://github.com/tungdo0602/MSRewardBot",
+      "homepage": "https://tungdo0602.github.io/MSRewardBot/",
+      "stars": 10,
+      "forks": 6,
+      "open_issues": 0,
+      "language": "HTML",
+      "topics": [
+        "microsoft",
+        "rewards"
+      ],
+      "pushed_at": "2023-11-02T16:45:41Z",
+      "created_at": "2022-11-17T10:10:40Z",
+      "archived": true,
+      "fork": false,
+      "license": "Apache-2.0"
+    },
+    {
+      "full_name": "xingkinglb/Microsoft-Rewards-Script-v5-CN",
+      "owner": "xingkinglb",
+      "avatar": "https://avatars.githubusercontent.com/u/77426728?v=4",
+      "description": "Microsoft Rewards Script v5.0.0 中文便携版 — 基于 TheNetsky 上游，附零依赖中文管理界面（概览/实时日志/账号/配置/工具箱），不改动上游源码，内置 Node 24 运行时",
+      "url": "https://github.com/xingkinglb/Microsoft-Rewards-Script-v5-CN",
+      "homepage": "https://github.com/xingkinglb/Microsoft-Rewards-Script-v5-CN/releases/latest",
+      "stars": 8,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "TypeScript",
+      "topics": [
+        "automation",
+        "chinese",
+        "microsoft-rewards-script",
+        "patchright",
+        "playwright",
+        "portable",
+        "typescript",
+        "webui",
+        "windows"
+      ],
+      "pushed_at": "2026-11-05T05:21:02Z",
+      "created_at": "2026-11-01T05:08:41Z",
+      "archived": false,
+      "fork": false,
+      "license": "GPL-3.0"
+    },
+    {
+      "full_name": "vanhobmt99/reward",
+      "owner": "vanhobmt99",
+      "avatar": "https://avatars.githubusercontent.com/u/57746121?v=4",
+      "description": "Tiện ích Chrome hỗ trợ tìm kiếm Bing, theo dõi tiến độ và đặt lịch cho Microsoft Rewards.",
+      "url": "https://github.com/vanhobmt99/reward",
+      "homepage": "https://vanhobmt99.github.io/reward/",
+      "stars": 6,
+      "forks": 1,
+      "open_issues": 0,
+      "language": "JavaScript",
+      "topics": [
+        "bing",
+        "chrome-extension",
+        "firefox-extension"
+      ],
+      "pushed_at": "2026-10-21T15:25:11Z",
+      "created_at": "2026-07-28T03:59:25Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "Drosscend/MicrosoftRewardBot",
+      "owner": "Drosscend",
+      "avatar": "https://avatars.githubusercontent.com/u/47970260?v=4",
+      "description": "Automatisation de bing reward en TypeScript",
+      "url": "https://github.com/Drosscend/MicrosoftRewardBot",
+      "homepage": "",
+      "stars": 5,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "TypeScript",
+      "topics": [
+        "bing",
+        "bot",
+        "puppeteer",
+        "typescript"
+      ],
+      "pushed_at": "2025-06-02T13:09:52Z",
+      "created_at": "2023-03-10T16:10:06Z",
+      "archived": true,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "HeSheng114514/microsoft-rewards-auto",
+      "owner": "HeSheng114514",
+      "avatar": "https://avatars.githubusercontent.com/u/99022410?v=4",
+      "description": "Microsoft Rewards 自动签到工具：多账号、定时调度、本地网页控制台、系统托盘常驻（Windows / Node.js / Playwright）",
+      "url": "https://github.com/HeSheng114514/microsoft-rewards-auto",
+      "homepage": "",
+      "stars": 5,
+      "forks": 0,
+      "open_issues": 1,
+      "language": "JavaScript",
+      "topics": [
+        "automation",
+        "bing",
+        "edge",
+        "multi-account",
+        "nodejs",
+        "playwright",
+        "rewards",
+        "windows"
+      ],
+      "pushed_at": "2026-10-30T13:07:07Z",
+      "created_at": "2026-09-28T16:25:02Z",
+      "archived": false,
+      "fork": false,
+      "license": "GPL-3.0"
+    },
+    {
+      "full_name": "adilasharaf/microsoft_rewards_extension",
+      "owner": "adilasharaf",
+      "avatar": "https://avatars.githubusercontent.com/u/85925253?v=4",
+      "description": "Microsoft / Bing Rewards Chromium based browser Extension for automatic Mobile and Desktop mode searches.",
+      "url": "https://github.com/adilasharaf/microsoft_rewards_extension",
+      "homepage": "",
+      "stars": 5,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "HTML",
+      "topics": [
+        "bing",
+        "bing-rewards",
+        "bing-rewards-automate",
+        "makemoney",
+        "microsoft",
+        "microsoft-rewards-bot",
+        "search-bot"
+      ],
+      "pushed_at": "2024-12-27T15:14:46Z",
+      "created_at": "2024-04-17T19:43:42Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "having5548/microsoft-rewards-docker",
+      "owner": "having5548",
+      "avatar": "https://avatars.githubusercontent.com/u/125118486?v=4",
+      "description": "Microsoft Rewards 微软积分自动化（二改版 v1.9.0）：已移除 Epic，新增 QQ 机器人推送与容器内登录窗口抓 Cookie",
+      "url": "https://github.com/having5548/microsoft-rewards-docker",
+      "homepage": "",
+      "stars": 5,
+      "forks": 1,
+      "open_issues": 1,
+      "language": "JavaScript",
+      "topics": [
+        "automation",
+        "bing-rewards",
+        "docker",
+        "microsoft-rewards-docker",
+        "nas"
+      ],
+      "pushed_at": "2026-11-07T11:26:58Z",
+      "created_at": "2026-10-25T01:12:28Z",
+      "archived": false,
+      "fork": false,
+      "license": "NOASSERTION"
+    },
+    {
+      "full_name": "Drosscend/Microsoft-Reward-V2",
+      "owner": "Drosscend",
+      "avatar": "https://avatars.githubusercontent.com/u/47970260?v=4",
+      "description": "Edge extension that automates Bing searches to earn Microsoft Rewards points",
+      "url": "https://github.com/Drosscend/Microsoft-Reward-V2",
+      "homepage": "https://kevin-dev.com/en/projects/microsoft-reward-v2",
+      "stars": 4,
+      "forks": 0,
+      "open_issues": 1,
+      "language": "TypeScript",
+      "topics": [
+        "automation",
+        "bing",
+        "browser-extension",
+        "edge-extension",
+        "manifest-v3",
+        "typescript"
+      ],
+      "pushed_at": "2026-11-03T08:26:31Z",
+      "created_at": "2024-09-02T17:11:54Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "Noah-Jaffe/MsftRewards-full-auto",
+      "owner": "Noah-Jaffe",
+      "avatar": "https://avatars.githubusercontent.com/u/19333845?v=4",
+      "description": "Msft Rewards automation",
+      "url": "https://github.com/Noah-Jaffe/MsftRewards-full-auto",
+      "homepage": "",
+      "stars": 4,
+      "forks": 1,
+      "open_issues": 0,
+      "language": "Python",
+      "topics": [
+        "automation"
+      ],
+      "pushed_at": "2025-09-27T13:46:02Z",
+      "created_at": "2023-06-30T16:29:47Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "SharkySkuishy/Rewarder",
+      "owner": "SharkySkuishy",
+      "avatar": "https://avatars.githubusercontent.com/u/173687164?v=4",
+      "description": "Rewarder is a tool that helps you to get Microsoft Rewards. You do the process of searching on Bing very faster so you can get points to spend in available stores.",
+      "url": "https://github.com/SharkySkuishy/Rewarder",
+      "homepage": "",
+      "stars": 4,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "Python",
+      "topics": [
+        "automation",
+        "bing",
+        "farming",
+        "free",
+        "microsoft-rewards-bot",
+        "microsoft-rewards-farmer",
+        "tool"
+      ],
+      "pushed_at": "2025-02-12T23:01:45Z",
+      "created_at": "2025-02-08T21:24:29Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "asbdfzcg/Microsoft-Rewards-Script",
+      "owner": "asbdfzcg",
+      "avatar": "https://avatars.githubusercontent.com/u/98405210?v=4",
+      "description": "Microsoft Rewards 自动脚本中文版，图形化管理，一键运行。",
+      "url": "https://github.com/asbdfzcg/Microsoft-Rewards-Script",
+      "homepage": "",
+      "stars": 4,
+      "forks": 1,
+      "open_issues": 0,
+      "language": "TypeScript",
+      "topics": [
+        "bot",
+        "microsoft-rewards-bot",
+        "microsoft-rewards-farmer",
+        "microsoft-rewards-script"
+      ],
+      "pushed_at": "2026-09-27T11:29:20Z",
+      "created_at": "2026-08-06T01:45:29Z",
+      "archived": false,
+      "fork": false,
+      "license": "GPL-3.0"
+    },
+    {
+      "full_name": "exolocity/Windows-Batch-Files",
+      "owner": "exolocity",
+      "avatar": "https://avatars.githubusercontent.com/u/4477741?v=4",
+      "description": "A few homemade batch files to make boring tasks fun",
+      "url": "https://github.com/exolocity/Windows-Batch-Files",
+      "homepage": "",
+      "stars": 4,
+      "forks": 1,
+      "open_issues": 0,
+      "language": "Batchfile",
+      "topics": [
+        "batch",
+        "batch-script-collection",
+        "batch-scripts",
+        "microsoft",
+        "print-spooler",
+        "printspooler",
+        "rewards",
+        "windows-11",
+        "windows-batch-script"
+      ],
+      "pushed_at": "2023-03-17T03:18:07Z",
+      "created_at": "2023-03-15T03:25:14Z",
+      "archived": false,
+      "fork": false,
+      "license": "MIT"
+    },
+    {
+      "full_name": "khtao/Microsoft-Rewards",
+      "owner": "khtao",
+      "avatar": "https://avatars.githubusercontent.com/u/8299207?v=4",
+      "description": "一个独立开发、非官方的 Python 桌面项目，用于在本机查看与整理 Microsoft Rewards 活动信息、记录积分变化、设置提醒，并提供部分浏览器操作辅助功能。",
+      "url": "https://github.com/khtao/Microsoft-Rewards",
+      "homepage": "",
+      "stars": 4,
+      "forks": 0,
+      "open_issues": 1,
+      "language": "Python",
+      "topics": [],
+      "pushed_at": "2026-11-23T08:49:56Z",
+      "created_at": "2024-12-26T02:47:24Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "myan01WasTaken/ms-rewards-bot",
+      "owner": "myan01WasTaken",
+      "avatar": "https://avatars.githubusercontent.com/u/172698730?v=4",
+      "description": "microsoft rewards search bot",
+      "url": "https://github.com/myan01WasTaken/ms-rewards-bot",
+      "homepage": "",
+      "stars": 4,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "Python",
+      "topics": [
+        "bot",
+        "free-points",
+        "microsoft",
+        "microsoft-rewards-bot",
+        "microsoft-rewards-farmer",
+        "microsoft-rewards-points",
+        "rewards-bot"
+      ],
+      "pushed_at": "2025-09-15T00:31:16Z",
+      "created_at": "2025-09-14T02:26:42Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "raizar24/Bing-Rewards-Bot",
+      "owner": "raizar24",
+      "avatar": "https://avatars.githubusercontent.com/u/76771070?v=4",
+      "description": "Simple bot that uses selenium to farm Microsoft Rewards",
+      "url": "https://github.com/raizar24/Bing-Rewards-Bot",
+      "homepage": "",
+      "stars": 4,
+      "forks": 0,
+      "open_issues": 1,
+      "language": "Visual Basic .NET",
+      "topics": [
+        "bot",
+        "farm-microsoft-rewards",
+        "visual-basic-net"
+      ],
+      "pushed_at": "2023-12-31T11:19:38Z",
+      "created_at": "2023-12-15T11:46:10Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "soetbaer/RewardsTool",
+      "owner": "soetbaer",
+      "avatar": "https://avatars.githubusercontent.com/u/176420523?v=4",
+      "description": "Automatisches Sammeln von Microsoft-Rewards-Punkten – mit Webinterface, Windows-Setup und Linux-Server-Betrieb.",
+      "url": "https://github.com/soetbaer/RewardsTool",
+      "homepage": "",
+      "stars": 4,
+      "forks": 0,
+      "open_issues": 2,
+      "language": "Python",
+      "topics": [
+        "automation",
+        "bing",
+        "playwright",
+        "python",
+        "webinterface"
+      ],
+      "pushed_at": "2026-11-21T18:36:28Z",
+      "created_at": "2026-09-29T11:29:59Z",
+      "archived": false,
+      "fork": false,
+      "license": "MIT"
+    },
+    {
+      "full_name": "StDensity/Microsoft-Rewards-Automation",
+      "owner": "StDensity",
+      "avatar": "https://avatars.githubusercontent.com/u/84127029?v=4",
+      "description": "A program to automate web searches for quick Microsoft Rewards completion. (Both PC and Mobile) With pyautogui.",
+      "url": "https://github.com/StDensity/Microsoft-Rewards-Automation",
+      "homepage": "",
+      "stars": 3,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "Python",
+      "topics": [
+        "automation",
+        "bing-rewards",
+        "browser-automation",
+        "python",
+        "rewards-automation",
+        "tkinter"
+      ],
+      "pushed_at": "2026-03-11T11:35:47Z",
+      "created_at": "2023-09-08T08:12:17Z",
+      "archived": true,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "SuperRitchie/script-workflow",
+      "owner": "SuperRitchie",
+      "avatar": "https://avatars.githubusercontent.com/u/74891400?v=4",
+      "description": "Automation of points script workflow (contains MFA support).",
+      "url": "https://github.com/SuperRitchie/script-workflow",
+      "homepage": "",
+      "stars": 3,
+      "forks": 6,
+      "open_issues": 1,
+      "language": "Python",
+      "topics": [
+        "automation",
+        "workflow"
+      ],
+      "pushed_at": "2026-10-27T01:52:14Z",
+      "created_at": "2022-03-11T09:51:29Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "Fastidio96/MSRewardsBot",
+      "owner": "Fastidio96",
+      "avatar": "https://avatars.githubusercontent.com/u/30503926?v=4",
+      "description": "Windows client and self-hosted cross-platform server for Microsoft Rewards automation",
+      "url": "https://github.com/Fastidio96/MSRewardsBot",
+      "homepage": "",
+      "stars": 2,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "C#",
+      "topics": [
+        "automation",
+        "browser-automation",
+        "client-server",
+        "csharp",
+        "docker",
+        "dotnet",
+        "playwright",
+        "self-hosted",
+        "signalr",
+        "wpf"
+      ],
+      "pushed_at": "2026-05-11T17:47:43Z",
+      "created_at": "2025-10-12T15:10:23Z",
+      "archived": false,
+      "fork": false,
+      "license": "MIT"
+    },
+    {
+      "full_name": "adii2710/Automate-bing-points",
+      "owner": "adii2710",
+      "avatar": "https://avatars.githubusercontent.com/u/143246627?v=4",
+      "description": "This repo is contains the code to automate the microsoft bing rewards",
+      "url": "https://github.com/adii2710/Automate-bing-points",
+      "homepage": "",
+      "stars": 2,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "Python",
+      "topics": [
+        "bing",
+        "bing-automations",
+        "bing-rewards",
+        "bing-rewards-automate",
+        "bing-search-automate",
+        "complete-search",
+        "microsoft-search",
+        "microsoft-search-automate"
+      ],
+      "pushed_at": "2024-09-16T13:12:28Z",
+      "created_at": "2024-09-16T12:21:07Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "adilasharaf/bing_rewards_android",
+      "owner": "adilasharaf",
+      "avatar": "https://avatars.githubusercontent.com/u/85925253?v=4",
+      "description": "Microsoft / Bing Rewards Android App.",
+      "url": "https://github.com/adilasharaf/bing_rewards_android",
+      "homepage": "",
+      "stars": 2,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "Kotlin",
+      "topics": [
+        "android",
+        "bing",
+        "bing-rewards",
+        "bing-rewards-automate",
+        "microsoft",
+        "microsoft-rewards-bot",
+        "search-bot",
+        "webview-app"
+      ],
+      "pushed_at": "2024-12-27T15:25:27Z",
+      "created_at": "2023-12-31T12:16:55Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "morty10000/edge-rewards-bot",
+      "owner": "morty10000",
+      "avatar": "https://avatars.githubusercontent.com/u/191337529?v=4",
+      "description": "微软积分自动获取 + Edge 新标签页毛玻璃看板扩展（Playwright/CDP 真实浏览器路线）",
+      "url": "https://github.com/morty10000/edge-rewards-bot",
+      "homepage": "",
+      "stars": 2,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "Python",
+      "topics": [
+        "automation",
+        "dashboard",
+        "edge-extension",
+        "newtab",
+        "playwright"
+      ],
+      "pushed_at": "2026-10-12T05:17:53Z",
+      "created_at": "2026-10-09T08:04:01Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "zPan2327/Microsoft-Rewards-Script-Ch",
+      "owner": "zPan2327",
+      "avatar": "https://avatars.githubusercontent.com/u/62757456?v=4",
+      "description": "微软奖励脚本 · 中文版（基于上游 TheNetsky v5.0.0）：中国热搜查询源、PushPlus / Server酱 微信推送、中文运行摘要。主分支 v5-china。",
+      "url": "https://github.com/zPan2327/Microsoft-Rewards-Script-Ch",
+      "homepage": "",
+      "stars": 2,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "TypeScript",
+      "topics": [
+        "automation",
+        "bing-rewards",
+        "chinese",
+        "docker",
+        "microsoft-rewards-bot",
+        "playwright",
+        "typescript",
+        "wechat",
+        "zh-cn"
+      ],
+      "pushed_at": "2026-11-06T10:18:24Z",
+      "created_at": "2026-11-03T03:08:53Z",
+      "archived": false,
+      "fork": false,
+      "license": "GPL-3.0"
+    },
+    {
+      "full_name": "zSavT/Easy-Microsoft-Rewards-Point",
+      "owner": "zSavT",
+      "avatar": "https://avatars.githubusercontent.com/u/55914219?v=4",
+      "description": "This small program allows you to automatically search for bing to earn Microsoft Rewards points.",
+      "url": "https://github.com/zSavT/Easy-Microsoft-Rewards-Point",
+      "homepage": "",
+      "stars": 2,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "C",
+      "topics": [],
+      "pushed_at": "2025-04-28T13:59:07Z",
+      "created_at": "2021-12-02T17:27:08Z",
+      "archived": true,
+      "fork": false,
+      "license": "Unlicense"
+    },
+    {
+      "full_name": "ChrolloKyber/bingSearch",
+      "owner": "ChrolloKyber",
+      "avatar": "https://avatars.githubusercontent.com/u/89532437?v=4",
+      "description": "A simple python script to help you search bing for rewards",
+      "url": "https://github.com/ChrolloKyber/bingSearch",
+      "homepage": "",
+      "stars": 1,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "Python",
+      "topics": [
+        "pynput",
+        "python"
+      ],
+      "pushed_at": "2024-06-10T11:52:03Z",
+      "created_at": "2024-05-26T10:09:20Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "HashCheng/microsoft-rewards-checkin",
+      "owner": "HashCheng",
+      "avatar": "https://avatars.githubusercontent.com/u/82439748?v=4",
+      "description": "WorkBuddy 技能: 微软必应 Rewards 每日搜索积分自动打卡, 后台无头静默运行",
+      "url": "https://github.com/HashCheng/microsoft-rewards-checkin",
+      "homepage": "",
+      "stars": 1,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "JavaScript",
+      "topics": [
+        "automation",
+        "bing",
+        "cdp",
+        "skill",
+        "workbuddy"
+      ],
+      "pushed_at": "2026-11-04T15:01:02Z",
+      "created_at": "2026-11-04T14:52:13Z",
+      "archived": false,
+      "fork": false,
+      "license": "MIT"
+    },
+    {
+      "full_name": "MENISH489/Microsoft-rewards",
+      "owner": "MENISH489",
+      "avatar": "https://avatars.githubusercontent.com/u/183816685?v=4",
+      "description": "Get a chance to get the bing rewards hack",
+      "url": "https://github.com/MENISH489/Microsoft-rewards",
+      "homepage": "",
+      "stars": 1,
+      "forks": 1,
+      "open_issues": 0,
+      "language": null,
+      "topics": [
+        "automation-bing-python-bot-rewards-farmer",
+        "bing",
+        "bingrewards",
+        "microsft",
+        "python",
+        "python-bot",
+        "pythons-script",
+        "rewards-farmer"
+      ],
+      "pushed_at": "2025-09-03T16:11:09Z",
+      "created_at": "2025-09-03T15:13:42Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "Mohammed-Shajith/Rewards_Watcher",
+      "owner": "Mohammed-Shajith",
+      "avatar": "https://avatars.githubusercontent.com/u/200575971?v=4",
+      "description": "Get a phone/email alert the moment a Microsoft Rewards gift card (Amazon, Flipkart...) comes back in stock. Read-only restock watcher.",
+      "url": "https://github.com/Mohammed-Shajith/Rewards_Watcher",
+      "homepage": "",
+      "stars": 1,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "Java",
+      "topics": [
+        "bing-rewards",
+        "ntfy",
+        "playwright",
+        "python",
+        "restock-alert"
+      ],
+      "pushed_at": "2026-10-29T12:14:36Z",
+      "created_at": "2026-10-24T14:42:56Z",
+      "archived": false,
+      "fork": false,
+      "license": "MIT"
+    },
+    {
+      "full_name": "Mouchoir/Universal-Claimer",
+      "owner": "Mouchoir",
+      "avatar": "https://avatars.githubusercontent.com/u/4174327?v=4",
+      "description": "Self-hosted, single-user automation that claims free games and rewards on your own accounts — Epic Games, Amazon Prime Gaming, Twitch Prime, Microsoft Rewards.",
+      "url": "https://github.com/Mouchoir/Universal-Claimer",
+      "homepage": "",
+      "stars": 1,
+      "forks": 0,
+      "open_issues": 13,
+      "language": "TypeScript",
+      "topics": [
+        "automation",
+        "docker",
+        "epic-games",
+        "playwright",
+        "prime-gaming",
+        "self-hosted",
+        "twitch",
+        "typescript"
+      ],
+      "pushed_at": "2026-10-07T22:58:16Z",
+      "created_at": "2026-07-18T12:33:55Z",
+      "archived": false,
+      "fork": false,
+      "license": "MIT"
+    },
+    {
+      "full_name": "PapierBulle1631/bonus",
+      "owner": "PapierBulle1631",
+      "avatar": "https://avatars.githubusercontent.com/u/183861888?v=4",
+      "description": "additionnal microsoft rewards thumbnails automation",
+      "url": "https://github.com/PapierBulle1631/bonus",
+      "homepage": "https://theriaud.alwaysdata.net/script/en/",
+      "stars": 1,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "PowerShell",
+      "topics": [
+        "bot",
+        "microsoft-rewards-bot",
+        "powershell-script"
+      ],
+      "pushed_at": "2025-03-11T02:05:59Z",
+      "created_at": "2024-11-03T09:04:53Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "PapierBulle1631/kofi",
+      "owner": "PapierBulle1631",
+      "avatar": "https://avatars.githubusercontent.com/u/183861888?v=4",
+      "description": "microsoft rewards searches automation",
+      "url": "https://github.com/PapierBulle1631/kofi",
+      "homepage": "https://theriaud.alwaysdata.net/script/",
+      "stars": 1,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "PowerShell",
+      "topics": [
+        "bash-script",
+        "bot",
+        "microsoft-rewards-bot",
+        "powershell-script",
+        "shell-script"
+      ],
+      "pushed_at": "2025-03-11T02:02:26Z",
+      "created_at": "2024-10-04T18:18:11Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "PaulSalaun/ms-reward-bot",
+      "owner": "PaulSalaun",
+      "avatar": "https://avatars.githubusercontent.com/u/116551052?v=4",
+      "description": "Bot to complete MS Reward daily tasks",
+      "url": "https://github.com/PaulSalaun/ms-reward-bot",
+      "homepage": "",
+      "stars": 1,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "Python",
+      "topics": [
+        "json",
+        "python",
+        "selenium"
+      ],
+      "pushed_at": "2025-01-09T16:15:11Z",
+      "created_at": "2023-04-13T12:49:51Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "SL8Entropy/autohotkey-microsoft-rewards-search-cheat",
+      "owner": "SL8Entropy",
+      "avatar": "https://avatars.githubusercontent.com/u/122878483?v=4",
+      "description": "ALERT: THIS CHEAT HAS BEEN PATCHED AS OF 7/12/23. This program will create new tab, paste you selected thing, add a number and press enter, 10 times in a row. this helps in doing searches for microsoft rewards. i made this for myself just randomly this afternoon, but thought it may help some one out there",
+      "url": "https://github.com/SL8Entropy/autohotkey-microsoft-rewards-search-cheat",
+      "homepage": "",
+      "stars": 1,
+      "forks": 1,
+      "open_issues": 0,
+      "language": "AutoHotkey",
+      "topics": [
+        "cheat",
+        "microsoft",
+        "microsoft-rewards-bot",
+        "microsoft-rewards-farmer",
+        "reward",
+        "rewards"
+      ],
+      "pushed_at": "2023-10-22T02:30:30Z",
+      "created_at": "2023-10-06T12:23:34Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "ShirakawaFM/bing-reward-free",
+      "owner": "ShirakawaFM",
+      "avatar": "https://avatars.githubusercontent.com/u/198852297?v=4",
+      "description": "Windows 上的 Microsoft Rewards 每日任务自动化：复用本机 Edge 登录态，基础规则开箱即用，进阶模式用 DeepSeek 元素索引决策；React 控制台、系统托盘、低功耗挂机、本地优先。｜ Local-first Microsoft Rewards daily-task automation for Windows with a React console, system tray and an optional DeepSeek agent.",
+      "url": "https://github.com/ShirakawaFM/bing-reward-free",
+      "homepage": "",
+      "stars": 1,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "Python",
+      "topics": [
+        "automation",
+        "bing-rewards",
+        "deepseek",
+        "desktop-app",
+        "llm-agent",
+        "local-first",
+        "playwright",
+        "pyinstaller",
+        "react",
+        "rewards-automation",
+        "system-tray",
+        "vite",
+        "windows"
+      ],
+      "pushed_at": "2026-11-01T09:29:44Z",
+      "created_at": "2026-11-01T06:20:27Z",
+      "archived": false,
+      "fork": false,
+      "license": "MIT"
+    },
+    {
+      "full_name": "WR-Class/Microsoft-Rewards-Script",
+      "owner": "WR-Class",
+      "avatar": "https://avatars.githubusercontent.com/u/297416138?v=4",
+      "description": "Microsoft Rewards ?????(????):?? API + ??????",
+      "url": "https://github.com/WR-Class/Microsoft-Rewards-Script",
+      "homepage": "",
+      "stars": 1,
+      "forks": 1,
+      "open_issues": 0,
+      "language": "JavaScript",
+      "topics": [
+        "automation",
+        "chinese",
+        "dashboard",
+        "docker",
+        "playwright",
+        "self-hosted",
+        "typescript"
+      ],
+      "pushed_at": "2026-10-22T18:28:49Z",
+      "created_at": "2026-10-10T15:43:02Z",
+      "archived": false,
+      "fork": false,
+      "license": "GPL-3.0"
+    },
+    {
+      "full_name": "Zzz210s/scripts-hub",
+      "owner": "Zzz210s",
+      "avatar": "https://avatars.githubusercontent.com/u/143953132?v=4",
+      "description": "Runner scripts, configuration, and documentation for a set of daily automation programs: Microsoft Rewards, WeRead, Epic free games, Bilibili tasks, and Baidu Tieba sign-in.",
+      "url": "https://github.com/Zzz210s/scripts-hub",
+      "homepage": "",
+      "stars": 1,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "JavaScript",
+      "topics": [
+        "automation",
+        "baidu-tieba",
+        "bilibili",
+        "docker",
+        "epic-games",
+        "nodejs",
+        "playwright",
+        "python",
+        "self-hosted",
+        "systemd",
+        "wecom",
+        "weread",
+        "windows"
+      ],
+      "pushed_at": "2026-11-20T14:06:27Z",
+      "created_at": "2026-10-04T06:10:13Z",
+      "archived": false,
+      "fork": false,
+      "license": "GPL-3.0"
+    },
+    {
+      "full_name": "harshit391/Bing-Points-Completion",
+      "owner": "harshit391",
+      "avatar": "https://avatars.githubusercontent.com/u/122436259?v=4",
+      "description": "Automate Microsoft Bing Rewards daily search points with this lightweight browser-based tool. Opens 34 unique Bing searches at timed intervals — no installs,    no dependencies.",
+      "url": "https://github.com/harshit391/Bing-Points-Completion",
+      "homepage": "https://completepoints.netlify.app/",
+      "stars": 1,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "HTML",
+      "topics": [
+        "automation",
+        "bing-points",
+        "bing-rewards",
+        "bing-search",
+        "browser-automation",
+        "html",
+        "javascript",
+        "microsoft-bing",
+        "rewards-automation"
+      ],
+      "pushed_at": "2026-04-20T06:14:03Z",
+      "created_at": "2023-06-05T02:13:43Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "passivebot/microsoft-rewards-login",
+      "owner": "passivebot",
+      "avatar": "https://avatars.githubusercontent.com/u/80653877?v=4",
+      "description": "An open-source Java program to log into Microsoft Rewards using Playwright. The program navigates to the login page, waits for the username field, enters the username, waits for the password field, enters the password, clicks the login button, and waits for the dashboard page to load.",
+      "url": "https://github.com/passivebot/microsoft-rewards-login",
+      "homepage": "",
+      "stars": 1,
+      "forks": 0,
+      "open_issues": 0,
+      "language": null,
+      "topics": [
+        "playwright",
+        "playwright-java",
+        "playwright-java-example",
+        "web-automation"
+      ],
+      "pushed_at": "2023-03-28T00:34:14Z",
+      "created_at": "2023-03-28T00:20:21Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "pavanvattikala/microsoft_rewards_search_bot",
+      "owner": "pavanvattikala",
+      "avatar": "https://avatars.githubusercontent.com/u/88368215?v=4",
+      "description": "Automate web searches and effortlessly earn rewards with the Microsoft Rewards Search Bot. This Python script uses Selenium to perform unique searches on Bing, earning points for exciting perks!",
+      "url": "https://github.com/pavanvattikala/microsoft_rewards_search_bot",
+      "homepage": "",
+      "stars": 1,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "HTML",
+      "topics": [
+        "automated-searches",
+        "automation",
+        "bing",
+        "edge-browser",
+        "perks",
+        "python",
+        "rewards-program",
+        "selenium",
+        "web-scraping"
+      ],
+      "pushed_at": "2023-07-29T05:28:50Z",
+      "created_at": "2023-07-29T05:21:30Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "sopan619/Auto-Bing-Search-Python",
+      "owner": "sopan619",
+      "avatar": "https://avatars.githubusercontent.com/u/114308837?v=4",
+      "description": "The \"Bing Search Automation Script\" is a Python script designed to automate Microsoft Bing searches with ease. This script provides a convenient and efficient way to interact with the Bing search engine programmatically, saving time and effort for tasks that involve multiple. This description is written by ChatGPT.",
+      "url": "https://github.com/sopan619/Auto-Bing-Search-Python",
+      "homepage": "",
+      "stars": 1,
+      "forks": 0,
+      "open_issues": 2,
+      "language": "Python",
+      "topics": [
+        "automation",
+        "bing",
+        "browser",
+        "browser-automation",
+        "code",
+        "microsoft",
+        "microsoft-farmer",
+        "python",
+        "rewards"
+      ],
+      "pushed_at": "2023-06-29T06:30:59Z",
+      "created_at": "2023-06-27T09:56:27Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "vfuncyy/scriptcat-ms-rewards",
+      "owner": "vfuncyy",
+      "avatar": "https://avatars.githubusercontent.com/u/40536207?v=4",
+      "description": "脚本猫用户脚本：微软积分（Microsoft Rewards）每日任务自动完成（PC/APP 签到、新闻阅读、热词搜索、每日任务集），支持浏览器通知与 PushPlus 微信推送",
+      "url": "https://github.com/vfuncyy/scriptcat-ms-rewards",
+      "homepage": "https://github.com/vfuncyy/scriptcat-ms-rewards/releases/latest",
+      "stars": 1,
+      "forks": 1,
+      "open_issues": 0,
+      "language": "JavaScript",
+      "topics": [
+        "auto-signin",
+        "bing-rewards",
+        "pushplus",
+        "scriptcat",
+        "userscript"
+      ],
+      "pushed_at": "2026-11-23T00:06:31Z",
+      "created_at": "2026-11-15T13:58:54Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "6402770-sys/zero-rewards",
+      "owner": "6402770-sys",
+      "avatar": "https://avatars.githubusercontent.com/u/297665749?v=4",
+      "description": "Hands-free Microsoft Rewards farmer for Android. Drives the official Bing app via an AccessibilityService — multi-account, batch queue, streak reminders. No cloud, no scraping, no passwords.",
+      "url": "https://github.com/6402770-sys/zero-rewards",
+      "homepage": "",
+      "stars": 0,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "Kotlin",
+      "topics": [
+        "accessibility-service",
+        "android",
+        "automation",
+        "bing",
+        "farmer",
+        "jetpack-compose",
+        "kotlin",
+        "material3"
+      ],
+      "pushed_at": "2026-11-21T16:03:17Z",
+      "created_at": "2026-11-09T03:52:49Z",
+      "archived": false,
+      "fork": false,
+      "license": "NOASSERTION"
+    },
+    {
+      "full_name": "AnujYadav-Dev/AutoRewards",
+      "owner": "AnujYadav-Dev",
+      "avatar": "https://avatars.githubusercontent.com/u/182692924?v=4",
+      "description": "Stop wasting time on manual searches. AutoRewards runs in the background to help you hit your daily point limits on both Desktop and Mobile effortlessly.",
+      "url": "https://github.com/AnujYadav-Dev/AutoRewards",
+      "homepage": "",
+      "stars": 0,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "JavaScript",
+      "topics": [
+        "automation",
+        "extension",
+        "microsoft-rewards-bot",
+        "search-bot"
+      ],
+      "pushed_at": "2026-01-26T05:19:46Z",
+      "created_at": "2026-01-25T16:49:38Z",
+      "archived": false,
+      "fork": false,
+      "license": "MIT"
+    },
+    {
+      "full_name": "AnujYadav-Dev/Orbit-Beta",
+      "owner": "AnujYadav-Dev",
+      "avatar": "https://avatars.githubusercontent.com/u/182692924?v=4",
+      "description": "An automated Microsoft Rewards farming bot, fully modernized to run 24/7 in the cloud. Earn points across multiple accounts completely hands-free using GitHub Actions and Neon Postgres.",
+      "url": "https://github.com/AnujYadav-Dev/Orbit-Beta",
+      "homepage": "https://orbit-beta.onrender.com/login",
+      "stars": 0,
+      "forks": 3,
+      "open_issues": 0,
+      "language": "TypeScript",
+      "topics": [
+        "automation",
+        "bing-automations",
+        "dashboard",
+        "github-actions",
+        "nodejs",
+        "playwright",
+        "postgresql",
+        "rewards-automation"
+      ],
+      "pushed_at": "2026-06-08T10:12:33Z",
+      "created_at": "2026-05-22T17:50:02Z",
+      "archived": false,
+      "fork": false,
+      "license": "NOASSERTION"
+    },
+    {
+      "full_name": "ForhadHossain71/bing-rewards-search-automator",
+      "owner": "ForhadHossain71",
+      "avatar": "https://avatars.githubusercontent.com/u/112680572?v=4",
+      "description": "Edge & Chrome extension (Manifest V3) that automates Bing searches for Microsoft Rewards, tracks points live, waits out cooldowns and stops at the daily limit.",
+      "url": "https://github.com/ForhadHossain71/bing-rewards-search-automator",
+      "homepage": "https://t.me/Forhad71",
+      "stars": 0,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "JavaScript",
+      "topics": [
+        "automation",
+        "bing",
+        "bing-rewards",
+        "bing-search",
+        "browser-extension",
+        "chrome-extension",
+        "edge-extension",
+        "javascript",
+        "manifest-v3",
+        "rewards"
+      ],
+      "pushed_at": "2026-11-07T06:32:46Z",
+      "created_at": "2026-11-07T06:27:05Z",
+      "archived": false,
+      "fork": false,
+      "license": "MIT"
+    },
+    {
+      "full_name": "VISI0N22/Microsoft-Rewards-Bot-ReFree",
+      "owner": "VISI0N22",
+      "avatar": "https://avatars.githubusercontent.com/u/195396952?v=4",
+      "description": "The repository is a chrome extension microsoft rewards bot compatible with any browser.",
+      "url": "https://github.com/VISI0N22/Microsoft-Rewards-Bot-ReFree",
+      "homepage": "",
+      "stars": 0,
+      "forks": 1,
+      "open_issues": 0,
+      "language": "JavaScript",
+      "topics": [
+        "bot",
+        "bot-automation",
+        "chrome-extension",
+        "microsoft",
+        "microsoft-rewards-bot"
+      ],
+      "pushed_at": "2026-04-12T02:19:17Z",
+      "created_at": "2026-04-09T02:57:37Z",
+      "archived": true,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "akbarr13/bing-rewards",
+      "owner": "akbarr13",
+      "avatar": "https://avatars.githubusercontent.com/u/50468578?v=4",
+      "description": "Automate Bing searches to collect Microsoft Rewards points",
+      "url": "https://github.com/akbarr13/bing-rewards",
+      "homepage": "",
+      "stars": 0,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "JavaScript",
+      "topics": [
+        "automation",
+        "bing",
+        "nodejs",
+        "web-scraping"
+      ],
+      "pushed_at": "2026-03-30T17:17:24Z",
+      "created_at": "2026-03-30T17:17:21Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "badarch47/Microsoft-Rewards-Script",
+      "owner": "badarch47",
+      "avatar": "https://avatars.githubusercontent.com/u/35829979?v=4",
+      "description": "Automated Microsoft Rewards daily tasks with GitHub Actions, redacted logs, and Enterprise WeChat notifications",
+      "url": "https://github.com/badarch47/Microsoft-Rewards-Script",
+      "homepage": "",
+      "stars": 0,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "TypeScript",
+      "topics": [
+        "automation",
+        "github-actions",
+        "playwright",
+        "wecom"
+      ],
+      "pushed_at": "2026-10-26T10:35:14Z",
+      "created_at": "2026-10-26T03:37:52Z",
+      "archived": false,
+      "fork": false,
+      "license": "GPL-3.0"
+    },
+    {
+      "full_name": "entropy63/reward-routine-automator",
+      "owner": "entropy63",
+      "avatar": "https://avatars.githubusercontent.com/u/100877322?v=4",
+      "description": "A Manifest V3 Chrome extension that runs your daily Microsoft/Bing Rewards routine — searches, daily set, keep-earning and claims — with human-paced typing. Five parallel builds with Android-dessert codenames (Cupcake → Gingerbread).",
+      "url": "https://github.com/entropy63/reward-routine-automator",
+      "homepage": "",
+      "stars": 0,
+      "forks": 2,
+      "open_issues": 1,
+      "language": "JavaScript",
+      "topics": [
+        "automation",
+        "bing-rewards",
+        "chrome-extension",
+        "javascript",
+        "manifest-v3",
+        "react",
+        "typescript",
+        "vite"
+      ],
+      "pushed_at": "2026-11-04T09:03:36Z",
+      "created_at": "2026-09-06T10:48:03Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "iktrnch/bing-rewards",
+      "owner": "iktrnch",
+      "avatar": "https://avatars.githubusercontent.com/u/73740783?v=4",
+      "description": "Python macro that automates Bing searches for Microsoft Rewards.",
+      "url": "https://github.com/iktrnch/bing-rewards",
+      "homepage": "",
+      "stars": 0,
+      "forks": 1,
+      "open_issues": 0,
+      "language": "Python",
+      "topics": [
+        "automation",
+        "bing",
+        "python"
+      ],
+      "pushed_at": "2025-01-18T21:34:16Z",
+      "created_at": "2024-05-04T19:16:06Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "luckygoswami/Micrew",
+      "owner": "luckygoswami",
+      "avatar": "https://avatars.githubusercontent.com/u/125822925?v=4",
+      "description": "Micrew is a Chrome extension designed to automatically search for random stock prices on Bing, helping you earn daily Microsoft Rewards points.",
+      "url": "https://github.com/luckygoswami/Micrew",
+      "homepage": "",
+      "stars": 0,
+      "forks": 1,
+      "open_issues": 0,
+      "language": "JavaScript",
+      "topics": [
+        "automate-searches",
+        "automation",
+        "bing-search",
+        "browser-ex",
+        "chrome-api",
+        "chrome-storage",
+        "content-script",
+        "javascript",
+        "microsoft-rewards-bot",
+        "rewards-automation",
+        "web-scripting"
+      ],
+      "pushed_at": "2024-08-30T18:50:08Z",
+      "created_at": "2024-07-31T18:24:26Z",
+      "archived": false,
+      "fork": false,
+      "license": "MIT"
+    },
+    {
+      "full_name": "saketthakur001/automate-bing-searching-to-bet-bing-credits",
+      "owner": "saketthakur001",
+      "avatar": "https://avatars.githubusercontent.com/u/58982512?v=4",
+      "description": "Prototype script to generate a randomized schedule of Bing search sessions, intended as a building block for automating Bing Rewards points farming",
+      "url": "https://github.com/saketthakur001/automate-bing-searching-to-bet-bing-credits",
+      "homepage": "",
+      "stars": 0,
+      "forks": 0,
+      "open_issues": 2,
+      "language": "Jupyter Notebook",
+      "topics": [
+        "automation",
+        "bing",
+        "prototype",
+        "python"
+      ],
+      "pushed_at": "2026-08-03T02:59:56Z",
+      "created_at": "2023-12-15T09:06:44Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    },
+    {
+      "full_name": "spasmodiczz/microsoft-rewards-script-armv7l",
+      "owner": "spasmodiczz",
+      "avatar": "https://avatars.githubusercontent.com/u/133554546?v=4",
+      "description": "Microsoft-Rewards-Script (V4-china) 的 armv7l/RK3229 适配分支：浏览器网络栈桥接绕过 TLS 指纹、弱设备导航超时修复、登录态票据校验、随机化无人值守调度器与完整部署文档",
+      "url": "https://github.com/spasmodiczz/microsoft-rewards-script-armv7l",
+      "homepage": "",
+      "stars": 0,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "TypeScript",
+      "topics": [
+        "armbian",
+        "armhf",
+        "armv7l",
+        "automation",
+        "bing-rewards",
+        "headless-box",
+        "patchright",
+        "playwright",
+        "rk3229",
+        "typescript",
+        "unattended"
+      ],
+      "pushed_at": "2026-09-25T05:00:23Z",
+      "created_at": "2026-09-25T04:44:59Z",
+      "archived": false,
+      "fork": false,
+      "license": "GPL-3.0"
+    },
+    {
+      "full_name": "wenxixixi-miao/microsoft-rewards-script-cn",
+      "owner": "wenxixixi-miao",
+      "avatar": "https://avatars.githubusercontent.com/u/69410346?v=4",
+      "description": "Microsoft Rewards 脚本简体中文汉化版（基于 TheNetsky/Microsoft-Rewards-Script v4.3.2）：中文日志翻译器、macOS 双击启动、移动端登录超时放宽",
+      "url": "https://github.com/wenxixixi-miao/microsoft-rewards-script-cn",
+      "homepage": "",
+      "stars": 0,
+      "forks": 0,
+      "open_issues": 0,
+      "language": "TypeScript",
+      "topics": [
+        "automation",
+        "chinese",
+        "chinese-translation",
+        "macos",
+        "playwright",
+        "rewards-bot",
+        "typescript"
+      ],
+      "pushed_at": "2026-11-06T01:38:18Z",
+      "created_at": "2026-11-06T01:37:14Z",
+      "archived": false,
+      "fork": false,
+      "license": "GPL-3.0"
+    },
+    {
+      "full_name": "zoltrons/bing-clean",
+      "owner": "zoltrons",
+      "avatar": "https://avatars.githubusercontent.com/u/18362677?v=4",
+      "description": "uBlock Origin filter list for Bing: removes Copilot, AI mode, MSN and ads, blocks telemetry and tracking, keeps Microsoft Rewards working",
+      "url": "https://github.com/zoltrons/bing-clean",
+      "homepage": "",
+      "stars": 0,
+      "forks": 0,
+      "open_issues": 0,
+      "language": null,
+      "topics": [
+        "adblock",
+        "bing",
+        "copilot",
+        "filter-list",
+        "msn",
+        "privacy",
+        "tracking-protection",
+        "ublock-origin",
+        "ublock-origin-filters"
+      ],
+      "pushed_at": "2026-11-21T11:02:41Z",
+      "created_at": "2026-11-21T10:57:51Z",
+      "archived": false,
+      "fork": false,
+      "license": null
+    }
+  ]
+};
+
+</script>
+    <script>
+/* Conquistas — lista do tópico microsoft-rewards
+   Sem dependências. Renderiza a partir de window.REPOS_DATA (data/repos.js),
+   com fallback para fetch de data/repos.json. */
+
+(function () {
+  "use strict";
+
+  var LANG_COLORS = {
+    TypeScript: "#3178c6",
+    Python: "#3572A5",
+    JavaScript: "#f1e05a",
+    HTML: "#e34c26",
+    Java: "#b07219",
+    Kotlin: "#A97BFF",
+    PowerShell: "#012456",
+    Shell: "#89e051",
+    Batchfile: "#C1F12E",
+    C: "#555555",
+    "C#": "#178600",
+    AutoHotkey: "#6594b9",
+    "Jupyter Notebook": "#DA5B0B",
+    "Visual Basic .NET": "#945db7",
+  };
+
+  var ICONS = {
+    star: '<path d="M12 3.2l2.8 5.7 6.3.9-4.6 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.8l6.2-.9z" fill="currentColor" stroke="none"/>',
+    fork: '<circle cx="7" cy="4.5" r="1.8"/><circle cx="17" cy="4.5" r="1.8"/><circle cx="7" cy="19.5" r="1.8"/><path d="M7 6.3v11.4M17 6.3v3.2a4 4 0 0 1-4 4H7"/>',
+    arrow: '<path d="M7 17 17 7"/><path d="M9 7h8v8"/>',
+  };
+
+  var state = {
+    query: "",
+    language: "all",
+    sort: "stars",
+    hideArchived: false,
+  };
+
+  var data = null;
+  var nodes = {};
+
+  // ------------------------------------------------------------------ utils
+  function normalize(text) {
+    return String(text || "")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  }
+
+  function formatNumber(value) {
+    try {
+      return new Intl.NumberFormat("pt-BR").format(value);
+    } catch (error) {
+      return String(value);
+    }
+  }
+
+  function formatDate(iso) {
+    var date = new Date(iso);
+    if (isNaN(date.getTime())) return "—";
+    try {
+      return new Intl.DateTimeFormat("pt-BR", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+      }).format(date);
+    } catch (error) {
+      return date.toLocaleDateString();
+    }
+  }
+
+  function relativeUpdate(iso) {
+    var then = Date.parse(iso);
+    if (isNaN(then)) return "";
+    var days = Math.max(0, Math.floor((Date.now() - then) / 86400000));
+    if (days === 0) return "atualizado hoje";
+    if (days === 1) return "atualizado ontem";
+    if (days < 7) return "atualizado há " + days + " dias";
+    if (days < 30) {
+      var weeks = Math.round(days / 7);
+      return "atualizado há " + weeks + (weeks === 1 ? " semana" : " semanas");
+    }
+    if (days < 365) {
+      var months = Math.round(days / 30);
+      return "atualizado há " + months + (months === 1 ? " mês" : " meses");
+    }
+    var years = Math.floor(days / 365);
+    return "atualizado há " + years + (years === 1 ? " ano" : " anos");
+  }
+
+  function el(tag, className, text) {
+    var node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined && text !== null) node.textContent = text;
+    return node;
+  }
+
+  function svgIcon(name, className) {
+    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.setAttribute("aria-hidden", "true");
+    svg.setAttribute("focusable", "false");
+    if (className) svg.setAttribute("class", className);
+    svg.innerHTML = ICONS[name];
+    return svg;
+  }
+
+  // ------------------------------------------------------------------ dados
+  function filtered() {
+    var query = normalize(state.query).trim();
+    var list = data.repos.filter(function (repo) {
+      if (state.hideArchived && repo.archived) return false;
+      if (state.language !== "all" && (repo.language || "Sem linguagem") !== state.language) {
+        return false;
+      }
+      if (!query) return true;
+      var haystack = normalize(
+        [repo.full_name, repo.description, repo.owner, (repo.topics || []).join(" "), repo.language]
+          .join(" ")
+      );
+      return query.split(/\s+/).every(function (term) {
+        return haystack.indexOf(term) !== -1;
+      });
+    });
+
+    var sorters = {
+      stars: function (a, b) {
+        return b.stars - a.stars || a.full_name.localeCompare(b.full_name);
+      },
+      updated: function (a, b) {
+        return Date.parse(b.pushed_at) - Date.parse(a.pushed_at) || b.stars - a.stars;
+      },
+      forks: function (a, b) {
+        return b.forks - a.forks || b.stars - a.stars;
+      },
+      name: function (a, b) {
+        return a.full_name.localeCompare(b.full_name, "pt-BR");
+      },
+    };
+    return list.sort(sorters[state.sort] || sorters.stars);
+  }
+
+  // ------------------------------------------------------------------ render
+  function createCard(repo, rank) {
+    var card = el("a", "card");
+    card.href = repo.url;
+    card.target = "_blank";
+    card.rel = "noopener";
+    card.setAttribute(
+      "aria-label",
+      repo.full_name +
+        ", " +
+        formatNumber(repo.stars) +
+        " estrelas. Abrir no GitHub em nova aba."
+    );
+
+    var head = el("div", "card-head");
+    head.appendChild(el("span", "rank", "#" + rank));
+
+    var avatar = el("img", "avatar");
+    avatar.src = repo.avatar || "";
+    avatar.alt = "";
+    avatar.width = 30;
+    avatar.height = 30;
+    avatar.loading = "lazy";
+    avatar.decoding = "async";
+    avatar.addEventListener("error", function () {
+      avatar.style.visibility = "hidden";
+    });
+    head.appendChild(avatar);
+
+    var titles = el("div", "titles");
+    titles.appendChild(el("h2", "repo", repo.full_name.split("/")[1] || repo.full_name));
+    titles.appendChild(el("p", "owner", repo.owner));
+    head.appendChild(titles);
+
+    if (repo.archived) head.appendChild(el("span", "badge", "arquivado"));
+    card.appendChild(head);
+
+    var desc = el("p", "desc", repo.description || "Sem descrição no repositório.");
+    if (!repo.description) desc.classList.add("is-empty");
+    desc.title = repo.description || "";
+    card.appendChild(desc);
+
+    var topics = (repo.topics || []).slice(0, 3);
+    if (topics.length) {
+      var list = el("ul", "topics");
+      topics.forEach(function (topic) {
+        list.appendChild(el("li", "topic", topic));
+      });
+      card.appendChild(list);
+    }
+
+    var meta = el("div", "card-meta");
+
+    var stars = el("span", "metric stars");
+    stars.appendChild(svgIcon("star"));
+    stars.appendChild(el("span", null, formatNumber(repo.stars)));
+    meta.appendChild(stars);
+
+    var forks = el("span", "metric");
+    forks.appendChild(svgIcon("fork"));
+    forks.appendChild(el("span", null, formatNumber(repo.forks)));
+    meta.appendChild(forks);
+
+    var language = el("span", "lang");
+    var languageName = repo.language || "Sem linguagem";
+    var dot = el("span", "lang-dot");
+    dot.style.background = LANG_COLORS[languageName] || "var(--muted)";
+    language.appendChild(dot);
+    language.appendChild(el("span", null, languageName));
+    meta.appendChild(language);
+
+    card.appendChild(meta);
+
+    var foot = el("div", "card-foot");
+    foot.appendChild(el("span", "updated", relativeUpdate(repo.pushed_at)));
+
+    var cta = el("span", "cta");
+    cta.appendChild(el("span", null, "Abrir no GitHub"));
+    cta.appendChild(svgIcon("arrow"));
+    foot.appendChild(cta);
+
+    card.appendChild(foot);
+    return card;
+  }
+
+  function render() {
+    var list = filtered();
+    var fragment = document.createDocumentFragment();
+    list.forEach(function (repo, index) {
+      fragment.appendChild(createCard(repo, index + 1));
+    });
+    nodes.grid.replaceChildren(fragment);
+
+    var hasFilters =
+      state.query.trim() !== "" || state.language !== "all" || state.hideArchived;
+    var text = hasFilters
+      ? list.length + " de " + data.total + (data.total === 1 ? " projeto" : " projetos")
+      : list.length + (list.length === 1 ? " projeto" : " projetos");
+    if (state.language !== "all") text += " · " + state.language;
+    if (state.hideArchived) text += " · arquivados ocultos";
+    nodes.count.textContent = text;
+
+    nodes.empty.hidden = list.length !== 0;
+    nodes.grid.hidden = list.length === 0;
+  }
+
+  // ------------------------------------------------------------------ filtros
+  function buildChips() {
+    var fragment = document.createDocumentFragment();
+    var options = [{ name: "all", label: "Todos", count: data.total }];
+    Object.keys(data.languages).forEach(function (language) {
+      options.push({ name: language, label: language, count: data.languages[language] });
+    });
+
+    options.forEach(function (option) {
+      var chip = el("button", "chip");
+      chip.type = "button";
+      chip.dataset.language = option.name;
+      chip.appendChild(el("span", null, option.label));
+      chip.appendChild(el("span", "lang-count", " " + option.count));
+      chip.setAttribute("aria-pressed", String(state.language === option.name));
+      chip.addEventListener("click", function () {
+        state.language = option.name;
+        Array.prototype.forEach.call(nodes.chips.children, function (other) {
+          other.setAttribute("aria-pressed", String(other === chip));
+        });
+        render();
+      });
+      fragment.appendChild(chip);
+    });
+
+    nodes.chips.replaceChildren(fragment);
+  }
+
+  function resetFilters() {
+    state.query = "";
+    state.language = "all";
+    state.hideArchived = false;
+    state.sort = "stars";
+    nodes.input.value = "";
+    nodes.hideArchived.checked = false;
+    nodes.sort.value = "stars";
+    Array.prototype.forEach.call(nodes.chips.children, function (chip) {
+      chip.setAttribute("aria-pressed", String(chip.dataset.language === "all"));
+    });
+    render();
+    nodes.input.focus();
+  }
+
+  function debounce(fn, delay) {
+    var timer = null;
+    return function () {
+      clearTimeout(timer);
+      timer = setTimeout(fn, delay);
+    };
+  }
+
+  // ------------------------------------------------------------------ init
+  function init(payload) {
+    data = payload;
+
+    nodes.grid = document.getElementById("lista");
+    nodes.count = document.getElementById("count");
+    nodes.empty = document.getElementById("empty");
+    nodes.chips = document.getElementById("langChips");
+    nodes.input = document.getElementById("q");
+    nodes.sort = document.getElementById("sort");
+    nodes.hideArchived = document.getElementById("hideArchived");
+
+    document.getElementById("repoTotal").textContent = formatNumber(data.total);
+    document.getElementById("statRepos").textContent = formatNumber(data.total);
+    document.getElementById("statStars").textContent = formatNumber(data.total_stars);
+    document.getElementById("statLangs").textContent = formatNumber(
+      Object.keys(data.languages).length
+    );
+    document.getElementById("statActive").textContent = formatNumber(
+      data.repos.filter(function (repo) {
+        return Date.now() - Date.parse(repo.pushed_at) < 30 * 86400000;
+      }).length
+    );
+    document.getElementById("generatedAt").textContent = formatDate(data.generated_at);
+    document.title = "Microsoft Rewards no GitHub — " + data.total + " projetos para explorar";
+
+    buildChips();
+
+    nodes.input.addEventListener(
+      "input",
+      debounce(function () {
+        state.query = nodes.input.value;
+        render();
+      }, 120)
+    );
+
+    nodes.sort.addEventListener("change", function () {
+      state.sort = nodes.sort.value;
+      render();
+    });
+
+    nodes.hideArchived.addEventListener("change", function () {
+      state.hideArchived = nodes.hideArchived.checked;
+      render();
+    });
+
+    document.getElementById("clearFilters").addEventListener("click", resetFilters);
+
+    render();
+  }
+
+  function fail(message) {
+    var grid = document.getElementById("lista");
+    grid.textContent = message;
+    grid.className = "empty";
+  }
+
+  function boot() {
+    if (window.REPOS_DATA && window.REPOS_DATA.repos) {
+      init(window.REPOS_DATA);
+      return;
+    }
+    fetch("data/repos.json")
+      .then(function (response) {
+        if (!response.ok) throw new Error("HTTP " + response.status);
+        return response.json();
+      })
+      .then(init)
+      .catch(function () {
+        fail("Não foi possível carregar os dados. Abra a página por um servidor HTTP local.");
+      });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+  } else {
+    boot();
+  }
+})();
+
+</script>
+  </body>
+</html>

@@ -38,6 +38,7 @@ docs/
   app.js            # busca, filtros, ordenação e renderização
   data/repos.json   # dados da API do GitHub
   data/repos.js     # mesmos dados como JS (funciona abrindo o arquivo direto)
+  projetos-offline.html # versão em arquivo único, gerada pelo script
   seletores.md      # documentação da automação
 ```
 
@@ -57,6 +58,13 @@ Atualizar a lista com dados novos (requer `gh` autenticado):
 
 ```bash
 python3 scripts/fetch_repos.py
+```
+
+Gerar a **versão offline** (um único `.html` com CSS, JS e dados embutidos, que abre
+direto no celular sem servidor nem internet):
+
+```bash
+python3 scripts/build_standalone.py   # → docs/projetos-offline.html
 ```
 
 ---
@@ -310,7 +318,8 @@ src/conquistas/
     searches.py   # buscas PC e celular
     daily.py      # conjunto diário (melhor esforço)
 scripts/
-  fetch_repos.py  # atualiza os dados do site a partir da API do GitHub
+  fetch_repos.py     # atualiza os dados do site a partir da API do GitHub
+  build_standalone.py # gera a versão offline em arquivo único
 docs/             # página estática do tópico (publicável no GitHub Pages)
 tests/            # pytest, sem dependência de navegador
 docs/seletores.md # como consertar seletores quebrados
