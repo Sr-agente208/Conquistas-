@@ -104,6 +104,49 @@
     return svg;
   }
 
+  // ------------------------------------------------------------------ copiar
+  function copyText(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text);
+    }
+    return new Promise(function (resolve, reject) {
+      try {
+        var area = document.createElement("textarea");
+        area.value = text;
+        area.setAttribute("readonly", "");
+        area.style.position = "fixed";
+        area.style.opacity = "0";
+        document.body.appendChild(area);
+        area.select();
+        var ok = document.execCommand("copy");
+        document.body.removeChild(area);
+        ok ? resolve() : reject(new Error("execCommand falhou"));
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
+
+  function bindCopyButtons() {
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest ? event.target.closest("[data-copy]") : null;
+      if (!button) return;
+      var text = button.getAttribute("data-copy") || "";
+      copyText(text).then(
+        function () {
+          var original = button.textContent;
+          button.textContent = "Copiado!";
+          setTimeout(function () {
+            button.textContent = original;
+          }, 1800);
+        },
+        function () {
+          button.textContent = "Copie: " + text;
+        }
+      );
+    });
+  }
+
   // ------------------------------------------------------------------ dados
   function filtered() {
     var query = normalize(state.query).trim();
@@ -354,6 +397,7 @@
   }
 
   function boot() {
+    bindCopyButtons();
     if (window.REPOS_DATA && window.REPOS_DATA.repos) {
       init(window.REPOS_DATA);
       return;

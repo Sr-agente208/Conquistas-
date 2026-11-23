@@ -26,11 +26,17 @@ Ganho nesta execução: +200 pontos
 
 ## Site: todos os projetos do tópico `microsoft-rewards`
 
-**Já está no ar — é só abrir e usar (zero cliques):**
-<https://htmlpreview.github.io/?https://raw.githubusercontent.com/Sr-agente208/Conquistas-/arena/8c858577-conquistas/docs/projetos-offline.html>
+**Já está no ar:** <https://sr-agente208.github.io/Conquistas-/>
 
-Alternativa, com um aviso intermediário do próprio serviço:
-<https://raw.githack.com/Sr-agente208/Conquistas-/arena/8c858577-conquistas/docs/projetos-offline.html>
+Publicado pelo GitHub Pages a partir desta branch (`/docs`), com HTTPS e sem build.
+Alternativas sem Pages, para abrir direto do repositório:
+
+- <https://htmlpreview.github.io/?https://raw.githubusercontent.com/Sr-agente208/Conquistas-/arena/8c858577-conquistas/docs/projetos-offline.html>
+- <https://raw.githack.com/Sr-agente208/Conquistas-/arena/8c858577-conquistas/docs/projetos-offline.html>
+  (mostra um aviso "External Content Notice" antes)
+
+A página também traz um cartão **“Painel do Conquistas”** com botão e instruções para abrir o
+painel local — ele não roda no Pages porque precisa de um navegador de verdade na sua máquina.
 
 Sem instalar nada, sem rodar comando e sem login. Os dois links renderizam
 `docs/projetos-offline.html` (página única, com CSS/JS/dados embutidos) direto da branch:

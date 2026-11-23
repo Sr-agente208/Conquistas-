@@ -38,6 +38,38 @@
     </header>
 
     <main class="wrap">
+
+      <section class="panel-box" aria-labelledby="painel-title">
+        <div class="panel-copy">
+          <h2 id="painel-title">Painel do Conquistas</h2>
+          <p>
+            Botões para executar, console ao vivo e histórico — a versão “abrir e usar”.
+            Ele roda no <strong>seu computador</strong>, não aqui: a automação precisa de uma
+            janela de navegador de verdade.
+          </p>
+        </div>
+        <div class="panel-actions">
+          <a class="panel-open" href="http://127.0.0.1:8765/" target="_blank" rel="noopener">
+            Abrir painel <span aria-hidden="true">↗</span>
+          </a>
+          <details class="panel-how">
+            <summary>Como ligar o painel</summary>
+            <ol>
+              <li><code>pip install -e ".[dev]" &amp;&amp; playwright install chromium</code></li>
+              <li><code>conquistas serve</code></li>
+            </ol>
+            <p>
+              Abre em <code>127.0.0.1:8765</code>. Para usar <strong>do celular</strong> na mesma
+              rede: <code>CONQUISTAS_ALLOW_PUBLIC=1 conquistas serve --host 0.0.0.0</code> e acesse
+              <code>http://IP-DO-PC:8765</code> — só em rede confiável.
+            </p>
+            <button type="button" class="copy-btn" data-copy="conquistas serve">
+              Copiar comando
+            </button>
+          </details>
+        </div>
+      </section>
+
       <section class="toolbar" aria-label="Busca e filtros">
         <label class="search" for="q">
           <svg viewBox="0 0 24 24" aria-hidden="true" class="icon">

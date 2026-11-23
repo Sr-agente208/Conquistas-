@@ -194,6 +194,138 @@ a {
   font-variant-numeric: tabular-nums;
 }
 
+
+/* ---------------- painel ---------------- */
+.panel-box {
+  display: grid;
+  gap: 14px;
+  margin: 18px 0 6px;
+  padding: 18px;
+  border-radius: var(--radius);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
+  background:
+    radial-gradient(120% 160% at 0% 0%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 70%),
+    var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.panel-box h2 {
+  margin: 0 0 4px;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+
+.panel-box p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.panel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.panel-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 46px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.panel-open:hover {
+  filter: brightness(1.06);
+}
+
+.panel-how {
+  flex: 1 1 240px;
+  min-width: 0;
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+
+.panel-how summary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 46px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+.panel-how summary::-webkit-details-marker {
+  display: none;
+}
+
+.panel-how summary::after {
+  content: "▾";
+  margin-left: 8px;
+  color: var(--muted);
+}
+
+.panel-how[open] summary::after {
+  content: "▴";
+}
+
+.panel-how ol {
+  margin: 10px 0;
+  padding-left: 1.2em;
+}
+
+.panel-how li {
+  margin-bottom: 6px;
+}
+
+.panel-how code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2px 5px;
+  overflow-wrap: anywhere;
+}
+
+.copy-btn {
+  min-height: 42px;
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.copy-btn:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  outline-offset: 2px;
+}
+
+@media (min-width: 720px) {
+  .panel-box {
+    grid-template-columns: 1.1fr 1fr;
+    align-items: center;
+  }
+}
+
 /* ---------------- toolbar ---------------- */
 .toolbar {
   position: sticky;
@@ -740,6 +872,38 @@ a {
     </header>
 
     <main class="wrap">
+
+      <section class="panel-box" aria-labelledby="painel-title">
+        <div class="panel-copy">
+          <h2 id="painel-title">Painel do Conquistas</h2>
+          <p>
+            Botões para executar, console ao vivo e histórico — a versão “abrir e usar”.
+            Ele roda no <strong>seu computador</strong>, não aqui: a automação precisa de uma
+            janela de navegador de verdade.
+          </p>
+        </div>
+        <div class="panel-actions">
+          <a class="panel-open" href="http://127.0.0.1:8765/" target="_blank" rel="noopener">
+            Abrir painel <span aria-hidden="true">↗</span>
+          </a>
+          <details class="panel-how">
+            <summary>Como ligar o painel</summary>
+            <ol>
+              <li><code>pip install -e ".[dev]" &amp;&amp; playwright install chromium</code></li>
+              <li><code>conquistas serve</code></li>
+            </ol>
+            <p>
+              Abre em <code>127.0.0.1:8765</code>. Para usar <strong>do celular</strong> na mesma
+              rede: <code>CONQUISTAS_ALLOW_PUBLIC=1 conquistas serve --host 0.0.0.0</code> e acesse
+              <code>http://IP-DO-PC:8765</code> — só em rede confiável.
+            </p>
+            <button type="button" class="copy-btn" data-copy="conquistas serve">
+              Copiar comando
+            </button>
+          </details>
+        </div>
+      </section>
+
       <section class="toolbar" aria-label="Busca e filtros">
         <label class="search" for="q">
           <svg viewBox="0 0 24 24" aria-hidden="true" class="icon">
@@ -2771,6 +2935,49 @@ window.REPOS_DATA = {
     return svg;
   }
 
+  // ------------------------------------------------------------------ copiar
+  function copyText(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text);
+    }
+    return new Promise(function (resolve, reject) {
+      try {
+        var area = document.createElement("textarea");
+        area.value = text;
+        area.setAttribute("readonly", "");
+        area.style.position = "fixed";
+        area.style.opacity = "0";
+        document.body.appendChild(area);
+        area.select();
+        var ok = document.execCommand("copy");
+        document.body.removeChild(area);
+        ok ? resolve() : reject(new Error("execCommand falhou"));
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
+
+  function bindCopyButtons() {
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest ? event.target.closest("[data-copy]") : null;
+      if (!button) return;
+      var text = button.getAttribute("data-copy") || "";
+      copyText(text).then(
+        function () {
+          var original = button.textContent;
+          button.textContent = "Copiado!";
+          setTimeout(function () {
+            button.textContent = original;
+          }, 1800);
+        },
+        function () {
+          button.textContent = "Copie: " + text;
+        }
+      );
+    });
+  }
+
   // ------------------------------------------------------------------ dados
   function filtered() {
     var query = normalize(state.query).trim();
@@ -3021,6 +3228,7 @@ window.REPOS_DATA = {
   }
 
   function boot() {
+    bindCopyButtons();
     if (window.REPOS_DATA && window.REPOS_DATA.repos) {
       init(window.REPOS_DATA);
       return;
