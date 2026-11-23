@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#5b4bdb" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e1017" media="(prefers-color-scheme: dark)" />
+    <title>Microsoft Rewards no GitHub — 71 projetos para explorar</title>
+    <meta
+      name="description"
+      content="Lista completa e pesquisável dos projetos públicos do tópico microsoft-rewards no GitHub. Filtre por linguagem, ordene por estrelas ou atualização e abra no celular."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%AD%90%3C/text%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <a class="skip" href="#lista">Pular para a lista</a>
+
+    <header class="hero">
+      <div class="wrap">
+        <p class="eyebrow">
+          <span class="dot" aria-hidden="true"></span>
+          Tópico do GitHub · <code>microsoft-rewards</code>
+        </p>
+        <h1>Automação do Microsoft&nbsp;Rewards</h1>
+        <p class="lede">
+          Todos os <strong id="repoTotal">71</strong> projetos públicos do tópico, em uma lista
+          feita para ler no celular: busque, filtre por linguagem e ordene como quiser.
+        </p>
+        <dl class="stats" id="stats">
+          <div><dt>Projetos</dt><dd id="statRepos">71</dd></div>
+          <div><dt>Estrelas somadas</dt><dd id="statStars">4.943</dd></div>
+          <div><dt>Linguagens</dt><dd id="statLangs">15</dd></div>
+          <div><dt>Ativos em 30 dias</dt><dd id="statActive">—</dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="toolbar" aria-label="Busca e filtros">
+        <label class="search" for="q">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="icon">
+            <circle cx="11" cy="11" r="7" />
+            <path d="m16.5 16.5 4 4" />
+          </svg>
+          <input
+            id="q"
+            type="search"
+            inputmode="search"
+            autocomplete="off"
+            placeholder="Buscar nome, descrição ou assunto"
+            aria-describedby="count"
+          />
+        </label>
+
+        <div class="chips" id="langChips" role="group" aria-label="Filtrar por linguagem"></div>
+      </section>
+
+      <section class="listhead" aria-label="Resultado e ordenação">
+        <p id="count" class="count" aria-live="polite"></p>
+        <div class="listhead-actions">
+          <label class="toggle">
+            <input type="checkbox" id="hideArchived" />
+            <span>Ocultar arquivados</span>
+          </label>
+          <label class="sort">
+            <span class="sort-label">Ordenar</span>
+            <select id="sort">
+              <option value="stars">Mais estrelas</option>
+              <option value="updated">Atualizados há menos tempo</option>
+              <option value="forks">Mais forks</option>
+              <option value="name">Nome (A–Z)</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section id="lista" class="grid" aria-label="Repositórios"></section>
+
+      <div id="empty" class="empty" hidden>
+        <p class="empty-title">Nada encontrado com esses filtros.</p>
+        <p class="empty-text">Tente outra palavra ou limpe os filtros para ver os 71 projetos.</p>
+        <button type="button" id="clearFilters" class="btn">Limpar filtros</button>
+      </div>
+
+      <aside class="notice">
+        <h2>Antes de usar qualquer um deles</h2>
+        <p>
+          Automatizar os pontos <strong>viola o Contrato de Serviços da Microsoft</strong> e pode
+          levar à suspensão da conta. Estes são projetos de terceiros, sem qualquer vínculo com a
+          Microsoft ou com o Conquistas: leia o código e o README antes de executar, e nunca informe
+          sua senha fora do site oficial.
+        </p>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <p>
+          Dados coletados da API do GitHub em <time id="generatedAt">—</time> ·
+          <a href="https://github.com/topics/microsoft-rewards" target="_blank" rel="noopener"
+            >ver o tópico original</a
+          >
+        </p>
+        <p class="footer-small">
+          Página estática, sem rastreadores. Parte do projeto
+          <a href="https://github.com/Sr-agente208/Conquistas-" target="_blank" rel="noopener"
+            >Conquistas</a
+          >.
+        </p>
+      </div>
+    </footer>
+
+    <script src="data/repos.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

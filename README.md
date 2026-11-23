@@ -24,6 +24,42 @@ Ganho nesta execução: +200 pontos
 
 ---
 
+## Site: todos os projetos do tópico `microsoft-rewards`
+
+Além da automação, o repositório publica uma **página estática** que reúne os
+**71 projetos públicos** do tópico
+[microsoft-rewards](https://github.com/topics/microsoft-rewards) — com busca, filtro por
+linguagem, ordenação por estrelas/atualização/forks e cartões pensados para o celular.
+
+```
+docs/
+  index.html        # página única, sem framework
+  styles.css        # mobile-first, tema claro/escuro automático
+  app.js            # busca, filtros, ordenação e renderização
+  data/repos.json   # dados da API do GitHub
+  data/repos.js     # mesmos dados como JS (funciona abrindo o arquivo direto)
+  seletores.md      # documentação da automação
+```
+
+Rodar localmente:
+
+```bash
+python3 -m http.server 8000 --directory docs
+# abra http://localhost:8000
+```
+
+Publicar no GitHub Pages (sem CI, sem build): **Settings → Pages → Deploy from a
+branch → `main` / `/docs`**. A página fica em
+`https://sr-agente208.github.io/Conquistas-/`.
+
+Atualizar a lista com dados novos (requer `gh` autenticado):
+
+```bash
+python3 scripts/fetch_repos.py
+```
+
+---
+
 ## ⚠️ Aviso importante (leia antes de usar)
 
 - O **Contrato de Serviços da Microsoft** não permite automação de pontos. Usar este
@@ -272,8 +308,12 @@ src/conquistas/
   tasks/
     searches.py   # buscas PC e celular
     daily.py      # conjunto diário (melhor esforço)
+scripts/
+  fetch_repos.py  # atualiza os dados do site a partir da API do GitHub
+docs/             # página estática do tópico (publicável no GitHub Pages)
 tests/            # pytest, sem dependência de navegador
 docs/seletores.md # como consertar seletores quebrados
+docs/ci.yml.example # pipeline de CI para copiar
 ```
 
 Contribuições são bem-vindas — especialmente **correções de seletores** acompanhadas de
