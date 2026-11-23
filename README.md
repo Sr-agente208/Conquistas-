@@ -27,11 +27,17 @@ Ganho nesta execução: +200 pontos
 ## Site: todos os projetos do tópico `microsoft-rewards`
 
 **Já está no ar — é só abrir e usar:**
-<https://jikizafsbrclkfgoccha.supabase.co/functions/v1/conquistas>
+<https://raw.githack.com/Sr-agente208/Conquistas-/arena/8c858577-conquistas/docs/projetos-offline.html>
 
-Sem instalar nada, sem rodar comando e sem login. A página é servida por uma **Edge
-Function** do Supabase que lê `docs/projetos-offline.html` deste repositório (cache de
-5 minutos), então atualizar os dados no repositório atualiza o site sozinho.
+Sem instalar nada, sem rodar comando e sem login. O link serve
+`docs/projetos-offline.html` (página única, com CSS/JS/dados embutidos) através do
+**raw.githack**, um CDN que entrega arquivos do GitHub com o `Content-Type` correto
+(`text/html`). Como aponta para a branch, atualizar os arquivos atualiza o site.
+
+> **Por que não no Supabase?** Testado e descartado: tanto Edge Functions quanto o
+> Storage do Supabase reescrevem o `Content-Type` para `text/plain` — o navegador exibe
+> o código-fonte em vez da página. Confirmado via `pg_net` (HTTP 200, 88.992 bytes,
+> `text/plain`). As funções e o bucket usados no teste foram removidos.
 
 Além da automação, o repositório publica uma **página estática** que reúne os
 **71 projetos públicos** do tópico
