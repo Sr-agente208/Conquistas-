@@ -15,6 +15,10 @@ htmlcov/
 
 # ---- Dados locais / sessão (NUNCA comitar) ----
 data/
+# ...exceto os dados públicos do site, que precisam ir para o GitHub Pages
+!docs/data/
+!docs/data/repos.json
+!docs/data/repos.js
 *.sqlite3
 *.sqlite3-journal
 *.log
