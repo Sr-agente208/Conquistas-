@@ -49,8 +49,9 @@ python3 -m http.server 8000 --directory docs
 ```
 
 Publicar no GitHub Pages (sem CI, sem build): **Settings → Pages → Deploy from a
-branch → `main` / `/docs`**. A página fica em
-`https://sr-agente208.github.io/Conquistas-/`.
+branch → escolha a branch e a pasta `/docs` → Save**. Funciona com `main` **ou com
+qualquer outra branch** — por exemplo, a branch de um pull request, o que permite publicar
+antes do merge. A página fica em `https://sr-agente208.github.io/Conquistas-/`.
 
 Atualizar a lista com dados novos (requer `gh` autenticado):
 
