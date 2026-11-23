@@ -26,6 +26,13 @@ Ganho nesta execução: +200 pontos
 
 ## Site: todos os projetos do tópico `microsoft-rewards`
 
+**Já está no ar — é só abrir e usar:**
+<https://jikizafsbrclkfgoccha.supabase.co/functions/v1/conquistas>
+
+Sem instalar nada, sem rodar comando e sem login. A página é servida por uma **Edge
+Function** do Supabase que lê `docs/projetos-offline.html` deste repositório (cache de
+5 minutos), então atualizar os dados no repositório atualiza o site sozinho.
+
 Além da automação, o repositório publica uma **página estática** que reúne os
 **71 projetos públicos** do tópico
 [microsoft-rewards](https://github.com/topics/microsoft-rewards) — com busca, filtro por
@@ -49,8 +56,8 @@ python3 -m http.server 8000 --directory docs
 # abra http://localhost:8000
 ```
 
-Publicar no GitHub Pages (sem CI, sem build): **Settings → Pages → Deploy from a
-branch → escolha a branch e a pasta `/docs` → Save**. Funciona com `main` **ou com
+Alternativa: publicar no GitHub Pages (sem CI, sem build) em **Settings → Pages →
+Deploy from a branch → escolha a branch e a pasta `/docs` → Save**. Funciona com `main` **ou com
 qualquer outra branch** — por exemplo, a branch de um pull request, o que permite publicar
 antes do merge. A página fica em `https://sr-agente208.github.io/Conquistas-/`.
 

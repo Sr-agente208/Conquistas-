@@ -37,6 +37,16 @@ def inline(index_html: str, docs: Path) -> str:
             raise SystemExit(f"Trecho não encontrado em index.html: {old}")
         html = html.replace(old, new, 1)
 
+    # Nesta versão o link para "baixar o arquivo único" não faz sentido:
+    # o próprio arquivo já é a versão offline (e o link quebraria quando
+    # publicado como página única, por exemplo numa Edge Function).
+    html = html.replace(
+        'Baixe a\n          <a href="projetos-offline.html" download>versão em arquivo único</a> e abra direto no\n'
+        "          navegador — ela já vem com os dados embutidos.",
+        "Este arquivo já funciona sozinho: os dados vêm embutidos e não é preciso\n"
+        "          servidor nem internet.",
+    )
+
     banner = (
         "<!-- Versão em arquivo único, gerada por scripts/build_standalone.py.\n"
         "     Abra este arquivo direto no navegador: não precisa de servidor. -->\n"
